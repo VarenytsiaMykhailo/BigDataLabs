@@ -11,13 +11,13 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 public class ReduceSideJoinRunner {
     public static void main(String[] args) throws Exception {
-        if (args.length != 2) {
+        if (args.length != 3) {
             System.err.println("Usage: ReduceSideJoinRunner <input path A> <input path B> <output path>");
             System.exit(-1);
         }
         Job job = Job.getInstance();
         job.setJarByClass(ReduceSideJoinRunner.class);
-        job.setJobName("ReduceSideJoinRunner");
+        job.setJobName("ReduceSideJoinRunner job");
         MultipleInputs.addInputPath(job, new Path(args[0]), TextInputFormat.class, CallsJoinMapper.class);
         MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, SystemsJoinMapper.class);
 
@@ -26,7 +26,7 @@ public class ReduceSideJoinRunner {
         job.setGroupingComparatorClass(TextPair.FirstComparator.class);
         job.setReducerClass(JoinReducer.class);
         job.setMapOutputKeyClass(TextPair.class);
-        
+
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
         job.setNumReduceTasks(2);
