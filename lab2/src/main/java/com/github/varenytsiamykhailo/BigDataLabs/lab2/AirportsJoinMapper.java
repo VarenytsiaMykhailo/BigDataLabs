@@ -7,7 +7,7 @@ import org.apache.hadoop.io.Text;
 
 import java.io.IOException;
 
-public class SystemsJoinMapper extends Mapper<LongWritable, Text, TextPair, Text> {
+public class AirportsJoinMapper extends Mapper<LongWritable, Text, TextPair, Text> {
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         SystemInfo system = new SystemInfo(value);

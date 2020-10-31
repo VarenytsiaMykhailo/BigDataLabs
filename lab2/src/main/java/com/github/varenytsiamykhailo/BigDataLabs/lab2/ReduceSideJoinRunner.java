@@ -4,7 +4,6 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
-import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
@@ -18,8 +17,8 @@ public class ReduceSideJoinRunner {
         Job job = Job.getInstance();
         job.setJarByClass(ReduceSideJoinRunner.class);
         job.setJobName("ReduceSideJoinRunner job");
-        MultipleInputs.addInputPath(job, new Path(args[0]), TextInputFormat.class, CallsJoinMapper.class); // flights
-        MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, SystemsJoinMapper.class); // airports
+        MultipleInputs.addInputPath(job, new Path(args[0]), TextInputFormat.class, FlightsJoinMapper.class); // flights
+        MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, AirportsJoinMapper.class); // airports
 
         FileOutputFormat.setOutputPath(job, new Path(args[2]));
         job.setPartitionerClass(TextPair.FirstPartitioner.class);
