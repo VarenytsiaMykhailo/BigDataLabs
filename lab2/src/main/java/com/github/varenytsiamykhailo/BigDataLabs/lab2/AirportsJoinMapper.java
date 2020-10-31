@@ -22,7 +22,7 @@ public class AirportsJoinMapper extends Mapper<LongWritable, Text, TextPair, Tex
         if (!key.equals(new LongWritable(0))) { // Пропускаем первую строку csv файла (наименования столбцов)
             String[] columns = value.toString().split(",");
 
-            Integer destAirportId = Integer.parseInt(columns[DEST_AIRPORT_ID_COLUMN_NUMBER]);
+            Integer destAirportId = Integer.parseInt(columns[DEST_AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"",""));
             String airportDescription = columns[AIRPORT_DESCRIPTION_COLUMN_NUMBER];
 
             context.write(new TextPair(destAirportId, FILE_NUMBER), new Text(airportDescription));  // key, value
