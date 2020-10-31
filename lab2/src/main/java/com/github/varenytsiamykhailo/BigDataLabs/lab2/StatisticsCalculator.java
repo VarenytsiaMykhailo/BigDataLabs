@@ -31,7 +31,7 @@ public class StatisticsCalculator {
     public double getSumOfDelays() {
         return sumOfDelays;
     }
-s
+
     public int getCountOfDelays() {
         return countOfDelays;
     }
