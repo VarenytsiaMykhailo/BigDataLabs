@@ -43,7 +43,7 @@ public class TextPair implements WritableComparable<TextPair> {
         this.fileNumber = dataInput.readInt(); //??
     }
 
-    @Override
+/*    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -51,11 +51,10 @@ public class TextPair implements WritableComparable<TextPair> {
         return destAirportId.equals(textPair.destAirportId) &&
                 fileNumber.equals(textPair.fileNumber);
     }
-/*
     @Override
     public int hashCode() {
         return Objects.hash(destAirportId, fileNumber);
-    }
+    }*/
 
     @Override
     public int compareTo(TextPair o) {
@@ -63,5 +62,5 @@ public class TextPair implements WritableComparable<TextPair> {
         if(cmp != 0)
             return cmp;
         return this.fileNumber.compareTo(o.getFileNumber());
-    }*/
+    }
 }
