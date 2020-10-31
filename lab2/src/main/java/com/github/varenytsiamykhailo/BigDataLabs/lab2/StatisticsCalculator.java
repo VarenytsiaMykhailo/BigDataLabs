@@ -10,11 +10,11 @@ public class StatisticsCalculator {
 
     private double maxDelay = 0.0;
 
-    private double sumOfDelays = 0;
+    private double sumOfDelays = 0.0;
 
     private int countOfDelays = 0;
 
-    private double averageDelay = 0;
+    private double averageDelay = 0.0;
 
     public StatisticsCalculator(Iterable<Text> values) {
         calculateStatistics(values);
@@ -53,7 +53,7 @@ s
             sumOfDelays += delay;
             countOfDelays++;
         }
-        averageDelay = sumOfDelays / countOfDelays;
+        averageDelay = sumOfDelays / (double)countOfDelays;
     }
 
 }
