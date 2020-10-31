@@ -10,7 +10,13 @@ import java.io.IOException;
 public class FlightsJoinMapper extends Mapper<LongWritable, Text, TextPair, Text> {
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-        ServiceCall call = new ServiceCall(value);
-        context.write(new TextPair(call.getSystemA().toString(), "1"), new Text(call.toString())); // key, value
+        if (!key.equals(new LongWritable(0))) { // Пропускаем первую строку csv файла (наименования столбцов)
+            String[] columns = value.toString().split(",");
+
+            Integer destAirportId = Integer.parseInt(columns[14]);
+            ServiceCall call = new ServiceCall(value);
+
+            context.write(new TextPair(call.getSystemA().toString(), "1"), new Text(call.toString())); // key, value
+        }
     }
 }
