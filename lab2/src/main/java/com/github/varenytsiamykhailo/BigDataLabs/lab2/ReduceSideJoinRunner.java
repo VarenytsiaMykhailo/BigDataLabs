@@ -9,7 +9,7 @@ import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 public class ReduceSideJoinRunner {
-    public static void main(String[] args) throws Exception {
+    /*public static void main(String[] args) throws Exception {
         if (args.length != 3) {
             System.err.println("Usage: ReduceSideJoinRunner <input path A> <input path B> <output path>");
             System.exit(-1);
@@ -30,5 +30,5 @@ public class ReduceSideJoinRunner {
         job.setOutputValueClass(IntWritable.class);
         job.setNumReduceTasks(2);
         System.exit(job.waitForCompletion(true) ? 0 : 1);
-    }
+    }*/
 }
