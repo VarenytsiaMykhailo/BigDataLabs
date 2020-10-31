@@ -14,8 +14,6 @@ public class AirportsJoinMapper extends Mapper<LongWritable, Text, TextPair, Tex
     //т.к. отсчет с нуля, то индексы на единицу меньше, чем в самом csv файле
     private static final int DEST_AIRPORT_ID_COLUMN_NUMBER = 0; // DEST_AIRPORT_ID — Идентификатор аэропорта
 
-    private static final int AIRPORT_DESCRIPTION_COLUMN_NUMBER = 1; // DEST_AIRPORT_ID — Идентификатор аэропорта
-
     private static final int FILE_NUMBER = 0; // номер входного файла (для этапа Reduce)
 
     @Override
@@ -24,7 +22,12 @@ public class AirportsJoinMapper extends Mapper<LongWritable, Text, TextPair, Tex
             String[] columns = value.toString().split(",");
 
             Integer destAirportId = Integer.parseInt(columns[DEST_AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"",""));
-            String airportDescription = columns[AIRPORT_DESCRIPTION_COLUMN_NUMBER];
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 1; i < columns.length; i++) {
+                sb.append(columns[i])
+            }
+            String airportDescription = sb.toString();
 
 
             System.out.println("$$$$$$$$$$$$$ AirportsJoinMapper: columns:" + Arrays.toString(columns) + " -___column[1] = " + airportDescription);
