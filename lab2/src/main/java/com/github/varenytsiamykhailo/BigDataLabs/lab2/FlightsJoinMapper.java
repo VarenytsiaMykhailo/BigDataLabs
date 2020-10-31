@@ -11,7 +11,7 @@ public class FlightsJoinMapper extends Mapper<LongWritable, Text, TextPair, Text
 
     private static final int DEST_AIRPORT_ID_COLUMN_NUMBER = 14; // т.к. отсчет с нуля (в csv файле - 15ый столбец)
 
-    private static final int ARR_DELAY_COLUMN_NUMBER = 
+    private static final int ARR_DELAY_NEW_COLUMN_NUMBER = 18
 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
