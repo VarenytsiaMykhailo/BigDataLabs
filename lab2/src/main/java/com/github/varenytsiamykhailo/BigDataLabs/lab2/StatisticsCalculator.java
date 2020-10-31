@@ -24,7 +24,6 @@ public class StatisticsCalculator {
         Iterator<Text> iter = values.iterator();
         while (iter.hasNext()) {
             double delay = Double.parseDouble(iter.next().toString());
-            Text call = iter.next();
             if (delay < minDelay) {
                 minDelay = delay;
             }
