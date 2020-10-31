@@ -14,6 +14,7 @@ public class FlightsJoinMapper extends Mapper<LongWritable, Text, TextPair, Text
 
     private static final int ARR_DELAY_NEW_COLUMN_NUMBER = 18; // ARR_DELAY_NEW - разница в минутах между расчетным временем приземления и реальным (>=0)
 
+    private static final int FILE_NUMBER = 1; // номер входного файла (для этапа Reduce)
 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
@@ -23,7 +24,7 @@ public class FlightsJoinMapper extends Mapper<LongWritable, Text, TextPair, Text
             Integer destAirportId = Integer.parseInt(columns[DEST_AIRPORT_ID_COLUMN_NUMBER]);
             String delay = columns[ARR_DELAY_NEW_COLUMN_NUMBER];
 
-            context.write(new TextPair(destAirportId, 1), new Text(delay)); // key, value
+            context.write(new TextPair(destAirportId, FILE_NUMBER), new Text(delay)); // key, value
         }
     }
 }
