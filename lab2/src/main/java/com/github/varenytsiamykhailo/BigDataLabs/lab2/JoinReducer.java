@@ -13,11 +13,12 @@ public class JoinReducer extends Reducer<TextPair, Text, Text, Text> {
     protected void reduce(TextPair key, Iterable<Text> values, Context context) throws
             IOException, InterruptedException {
         Iterator<Text> iter = values.iterator();
-        Text systemInfo = new Text(iter.next());
+        Text airportDescription = new Text(iter.next());
+
         while (iter.hasNext()) {
             Text call = iter.next();
-            Text outValue = new Text(call.toString() + "\t" + systemInfo.toString());
-            context.write(key.getFirst(), outValue);
+            Text outValue = new Text(call.toString() + "\t" + airportDescription.toString());
+            context.write(new Text(key.getDestAirportId().toString()), outValue);
         }
     }
 }
