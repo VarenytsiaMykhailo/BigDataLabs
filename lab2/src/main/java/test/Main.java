@@ -20,7 +20,9 @@ public class Main {
             while ((row = csvReader.readLine()) != null) {
                 // System.out.println(row);
                 String[] data = row.split(",");
-                System.out.println(Arrays.toString(data));
+                Integer destAirportId = Integer.parseInt(data[14]);
+                System.out.println(destAirportId);
+                //System.out.println(Arrays.toString(data));
             }
             csvReader.close();
         } catch (IOException e) {
