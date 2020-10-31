@@ -21,7 +21,7 @@ public class ReduceSideJoinRunner {
         MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, AirportsJoinMapper.class); // airports
 
         FileOutputFormat.setOutputPath(job, new Path(args[2]));
-        job.setPartitionerClass(TextPair.FirstPartitioner.class);
+        job.setPartitionerClass(TextPairPartitioner.class);
         job.setGroupingComparatorClass(TextPair.FirstComparator.class);
         job.setReducerClass(JoinReducer.class);
         job.setMapOutputKeyClass(TextPair.class);
