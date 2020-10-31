@@ -6,6 +6,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 public class FlightsJoinMapper extends Mapper<LongWritable, Text, TextPair, Text> {
 
@@ -23,6 +24,9 @@ public class FlightsJoinMapper extends Mapper<LongWritable, Text, TextPair, Text
 
             Integer destAirportId = Integer.parseInt(columns[DEST_AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"",""));
             String delay = columns[ARR_DELAY_NEW_COLUMN_NUMBER];
+
+            System.out.println("$$$$$$$$$$$$$ AirportsJoinMapper: columns:" + Arrays.toString(columns) + " -___column[1] = " + airportDescription);
+
 
             context.write(new TextPair(destAirportId, FILE_NUMBER), new Text(delay)); // key, value
         }
