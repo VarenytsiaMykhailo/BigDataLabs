@@ -37,5 +37,4 @@ public class TextPair implements WritableComparable<TextPair> {
     public int compareTo(TextPair o) {
         return 0;
     }
-
 }
