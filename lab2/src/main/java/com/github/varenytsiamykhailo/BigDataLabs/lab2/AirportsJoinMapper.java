@@ -30,7 +30,7 @@ public class AirportsJoinMapper extends Mapper<LongWritable, Text, TextPair, Tex
             String airportDescription = sb.toString();
 
 
-            System.out.println("$$$$$$$$$$$$$ AirportsJoinMapper: columns:" + Arrays.toString(columns) + " -___column[1] = " + airportDescription);
+            System.out.println("$$$$$$$$$$$$$ AirportsJoinMapper: columns:" + Arrays.toString(columns) + " -___column[1] = " + airportDescription + " destAirportId = " + destAirportId);
             context.write(new TextPair(destAirportId, FILE_NUMBER), new Text(airportDescription));  // key, value
         }
     }
