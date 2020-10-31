@@ -1,0 +1,7 @@
+com/github/varenytsiamykhailo/BigDataLabs/lab2/TextPairGroupingComparator.class
+com/github/varenytsiamykhailo/BigDataLabs/lab2/StatisticsCalculator.class
+com/github/varenytsiamykhailo/BigDataLabs/lab2/TextPairPartitioner.class
+com/github/varenytsiamykhailo/BigDataLabs/lab2/AirportsJoinMapper.class
+com/github/varenytsiamykhailo/BigDataLabs/lab2/JoinReducer.class
+com/github/varenytsiamykhailo/BigDataLabs/lab2/TextPair.class
+com/github/varenytsiamykhailo/BigDataLabs/lab2/FlightsJoinMapper.class
