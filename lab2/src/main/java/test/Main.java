@@ -25,7 +25,7 @@ public class Main {
                     String[] data = row.split(",");
                     Integer destAirportId = Integer.parseInt(data[14]);
                     System.out.println(destAirportId);
-                    //System.out.println(Arrays.toString(data));
+                    System.out.println(Arrays.toString(data));
                 }
             }
             csvReader.close();
