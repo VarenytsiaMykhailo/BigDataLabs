@@ -19,6 +19,7 @@ public class TextPair implements WritableComparable<TextPair> {
     }
 
     public TextPair(Integer destAirportId, Integer fileNumber ) {
+        super();
         this.destAirportId = destAirportId;
         this.fileNumber = fileNumber;
     }
