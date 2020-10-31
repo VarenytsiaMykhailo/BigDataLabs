@@ -20,7 +20,7 @@ public class FlightsJoinMapper extends Mapper<LongWritable, Text, TextPair, Text
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         if (!key.equals(new LongWritable(0))) { // Пропускаем первую строку csv файла (наименования столбцов)
-            String[] columns = value.toString().split(",");
+            String[] columns = value.toString().replaceAll(" ","").split(",");
 
             Integer destAirportId = Integer.parseInt(columns[DEST_AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"",""));
             String delay = columns[ARR_DELAY_NEW_COLUMN_NUMBER];
