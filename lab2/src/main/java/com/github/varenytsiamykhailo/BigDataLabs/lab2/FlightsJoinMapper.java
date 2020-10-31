@@ -27,8 +27,9 @@ public class FlightsJoinMapper extends Mapper<LongWritable, Text, TextPair, Text
 
             System.out.println("################## destAirPortId = " + destAirportId + " delay = " + delay);
 
-
-            context.write(new TextPair(destAirportId, FILE_NUMBER), new Text(delay)); // key, value
+            if (!(delay.isEmpty() || delay.equals("0.0"))) {
+                context.write(new TextPair(destAirportId, FILE_NUMBER), new Text(delay)); // key, value
+            }
         }
     }
 }
