@@ -6,6 +6,7 @@ import javax.xml.soap.Text;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
+import java.util.Objects;
 
 public class TextPair implements WritableComparable<TextPair> {
 
@@ -14,11 +15,20 @@ public class TextPair implements WritableComparable<TextPair> {
     private Integer fileNumber;
 
     public TextPair() {
+        super();
     }
 
     public TextPair(Integer destAirportId, Integer fileNumber ) {
         this.destAirportId = destAirportId;
         this.fileNumber = fileNumber;
+    }
+
+    public Integer getDestAirportId() {
+        return destAirportId;
+    }
+
+    public Integer getFileNumber() {
+        return fileNumber;
     }
 
     @Override
@@ -34,7 +44,24 @@ public class TextPair implements WritableComparable<TextPair> {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TextPair textPair = (TextPair) o;
+        return destAirportId.equals(textPair.destAirportId) &&
+                fileNumber.equals(textPair.fileNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(destAirportId, fileNumber);
+    }
+
+    @Override
     public int compareTo(TextPair o) {
-        return 0;
+        int cmp = this.destAirportId.compareTo(o.getDestAirportId());
+        if(cmp != 0)
+            return cmp;
+        return this.fileNumber.compareTo(o.getFileNumber());
     }
 }
