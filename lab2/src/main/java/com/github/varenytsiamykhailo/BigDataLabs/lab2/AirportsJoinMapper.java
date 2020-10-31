@@ -7,6 +7,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 public class AirportsJoinMapper extends Mapper<LongWritable, Text, TextPair, Text> {
 
@@ -25,6 +26,8 @@ public class AirportsJoinMapper extends Mapper<LongWritable, Text, TextPair, Tex
             Integer destAirportId = Integer.parseInt(columns[DEST_AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"",""));
             String airportDescription = columns[AIRPORT_DESCRIPTION_COLUMN_NUMBER];
 
+
+            System.out.println("$$$$$$$$$$$$$ AirportsJoinMapper: columns:" + Arrays.toString(columns) + " column[1] = " + airportDescription);
             context.write(new TextPair(destAirportId, FILE_NUMBER), new Text(airportDescription));  // key, value
         }
     }
