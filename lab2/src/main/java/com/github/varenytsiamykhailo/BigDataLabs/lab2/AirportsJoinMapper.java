@@ -25,7 +25,7 @@ public class AirportsJoinMapper extends Mapper<LongWritable, Text, TextPair, Tex
 
             StringBuilder sb = new StringBuilder();
             for (int i = 1; i < columns.length; i++) {
-                sb.append(columns[i])
+                sb.append(columns[i]);
             }
             String airportDescription = sb.toString();
 
