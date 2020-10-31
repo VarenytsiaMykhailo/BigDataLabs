@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         BufferedReader csvReader = null;
         try {
-            csvReader = new BufferedReader(new FileReader("technicalTask/airports.csv"));
+            csvReader = new BufferedReader(new FileReader("technicalTask/flights.csv"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
