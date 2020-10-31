@@ -1,4 +1,3 @@
-/*
 package com.github.varenytsiamykhailo.BigDataLabs.lab2;
 
 import org.apache.hadoop.mapreduce.Reducer;
@@ -21,4 +20,4 @@ public class JoinReducer extends Reducer<TextPair, Text, Text, Text> {
             context.write(key.getFirst(), outValue);
         }
     }
-}*/
+}

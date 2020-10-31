@@ -7,7 +7,7 @@ public class TextPairPartitioner extends Partitioner<TextPair, Text> {
 
     @Override
     public int getPartition(TextPair key, Text value, int numReduceTasks) {
-        return (key.hashCode() & Integer.MAX_VALUE) % numReduceTasks;
+        return (key.getDestAirportId().hashCode() & Integer.MAX_VALUE) % numReduceTasks;
     }
 
 }
