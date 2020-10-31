@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,8 +18,9 @@ public class Main {
 
         try {
             while ((row = csvReader.readLine()) != null) {
-                System.out.println(row);
-                //String[] data = row.split(",");
+                // System.out.println(row);
+                String[] data = row.split(",");
+                System.out.println(Arrays.toString(data));
             }
             csvReader.close();
         } catch (IOException e) {
