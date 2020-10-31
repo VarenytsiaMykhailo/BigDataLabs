@@ -23,7 +23,7 @@ public class FlightsJoinMapper extends Mapper<LongWritable, Text, TextPair, Text
             Integer destAirportId = Integer.parseInt(columns[DEST_AIRPORT_ID_COLUMN_NUMBER]);
             String delay = columns[ARR_DELAY_NEW_COLUMN_NUMBER];
 
-            context.write(new TextPair(destAirportId, "1"), new Text(delay)); // key, value
+            context.write(new TextPair(destAirportId, 1), new Text(delay)); // key, value
         }
     }
 }

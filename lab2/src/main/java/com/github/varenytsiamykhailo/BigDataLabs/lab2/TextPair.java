@@ -9,15 +9,28 @@ import java.io.IOException;
 
 public class TextPair implements WritableComparable<TextPair> {
 
-    
+    private Integer destAirportId;
+
+    private Integer fileNumber;
+
+    public TextPair() {
+    }
+
+    public TextPair(Integer destAirportId, Integer fileNumber ) {
+        this.destAirportId = destAirportId;
+        this.fileNumber = fileNumber;
+    }
+
     @Override
     public void write(DataOutput dataOutput) throws IOException {
-
+        dataOutput.writeInt(destAirportId);
+        dataOutput.writeInt(fileNumber);
     }
 
     @Override
     public void readFields(DataInput dataInput) throws IOException {
-
+        this.destAirportId = dataInput.readInt();
+        this.fileNumber = dataInput.readInt(); //??
     }
 
     @Override
