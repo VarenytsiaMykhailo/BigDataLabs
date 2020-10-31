@@ -7,10 +7,10 @@ import org.apache.hadoop.io.Text;
 
 import java.io.IOException;
 
-public class CallsJoinMapper extends Mapper<LongWritable, Text, TextPair, Text> {
+public class SystemsJoinMapper extends Mapper<LongWritable, Text, TextPair, Text> {
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-        ServiceCall call = new ServiceCall(value);
-        context.write(new TextPair(call.getSystemA().toString(), "1"), new Text(call.toString())); // key, value
+        SystemInfo system = new SystemInfo(value);
+        context.write(new TextPair(system.getSystemCode().toString(), "0"), new Text(system.toString()));  // key, value
     }
 }
