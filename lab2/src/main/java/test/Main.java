@@ -1,4 +1,4 @@
-package com.github.varenytsiamykhailo.BigDataLabs.lab2;
+package test;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
