@@ -1,2 +1,4 @@
-package com.github.varenytsiamykhailo.BigDataLabs.lab2;public class csvParser {
+package com.github.varenytsiamykhailo.BigDataLabs.lab2;
+
+public class csvParser {
 }

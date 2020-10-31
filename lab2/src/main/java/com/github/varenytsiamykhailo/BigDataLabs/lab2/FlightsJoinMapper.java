@@ -1,4 +1,3 @@
-/*
 package com.github.varenytsiamykhailo.BigDataLabs.lab2;
 
 import org.apache.hadoop.mapreduce.Mapper;
@@ -15,4 +14,3 @@ public class FlightsJoinMapper extends Mapper<LongWritable, Text, TextPair, Text
         context.write(new TextPair(call.getSystemA().toString(), "1"), new Text(call.toString())); // key, value
     }
 }
-*/
