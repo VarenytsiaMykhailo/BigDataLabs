@@ -51,7 +51,7 @@ public class TextPair implements WritableComparable<TextPair> {
         return destAirportId.equals(textPair.destAirportId) &&
                 fileNumber.equals(textPair.fileNumber);
     }
-
+/*
     @Override
     public int hashCode() {
         return Objects.hash(destAirportId, fileNumber);
@@ -63,5 +63,5 @@ public class TextPair implements WritableComparable<TextPair> {
         if(cmp != 0)
             return cmp;
         return this.fileNumber.compareTo(o.getFileNumber());
-    }
+    }*/
 }
