@@ -20,6 +20,26 @@ public class StatisticsCalculator {
         calculateStatistics(values);
     }
 
+    public double getMinDelay() {
+        return minDelay;
+    }
+
+    public double getMaxDelay() {
+        return maxDelay;
+    }
+
+    public double getSumOfDelays() {
+        return sumOfDelays;
+    }
+s
+    public int getCountOfDelays() {
+        return countOfDelays;
+    }
+
+    public double getAverageDelay() {
+        return averageDelay;
+    }
+
     private void calculateStatistics(Iterable<Text> values) {
         Iterator<Text> iter = values.iterator();
         while (iter.hasNext()) {
@@ -34,26 +54,6 @@ public class StatisticsCalculator {
             countOfDelays++;
         }
         averageDelay = sumOfDelays / countOfDelays;
-    }
-
-    public double getMinDelay() {
-        return minDelay;
-    }
-
-    public double getMaxDelay() {
-        return maxDelay;
-    }
-
-    public double getSumOfDelays() {
-        return sumOfDelays;
-    }
-
-    public int getCountOfDelays() {
-        return countOfDelays;
-    }
-
-    public double getAverageDelay() {
-        return averageDelay;
     }
 
 }
