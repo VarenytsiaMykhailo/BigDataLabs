@@ -30,7 +30,7 @@ public class StatisticsCalculator {
             if (delay > maxDelay) {
                 maxDelay = delay;
             }
-            sumOfDelays += delay;s
+            sumOfDelays += delay;
             countOfDelays++;
         }
         averageDelay = sumOfDelays / countOfDelays;
