@@ -25,7 +25,7 @@ public class FlightsJoinMapper extends Mapper<LongWritable, Text, TextPair, Text
             Integer destAirportId = Integer.parseInt(columns[DEST_AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"",""));
             String delay = columns[ARR_DELAY_NEW_COLUMN_NUMBER];
 
-            if (!(delay.isEmpty())) {
+            if (!(delay.isEmpty() || delay.equals("0.00"))) {
                 System.out.println("################## destAirPortId = " + destAirportId + " delay = " + delay);
                 context.write(new TextPair(destAirportId, FILE_NUMBER), new Text(delay)); // key, value
             }
