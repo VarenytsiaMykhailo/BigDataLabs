@@ -56,7 +56,7 @@ public class JoinReducer extends Reducer<TextPair, Text, Text, Text> {
 
         /*String result = "Airport name = " + airportDescription + "; Min delay = " + minDelay +
                 "; Max delay = " + maxDelay + "; Average delay =  " + averageDelay + ";";*/
-        if (countOfDelays > 0) {
+        if (countOfDelays > 0) { // Iterable<Text> values может прийти пустым. Обрабатываем.
             String result = "Airport name = " + airportDescription + " TEST = " + test;
             context.write(new Text("AirportId = " + key.getDestAirportId().toString() + "; "), new Text(result));
         }
