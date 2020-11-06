@@ -34,8 +34,15 @@ public class JoinReducer extends Reducer<TextPair, Text, Text, Text> {
 
         double averageDelay = 0.0;
 
+        String test = "";
+
         while (iter.hasNext()) {
-            double delay = Double.parseDouble(iter.next().toString());
+            String next = iter.next().toString();
+            if (!next.isEmpty())
+                test = test + next + " ";
+            else
+                test += "EMPTY ";
+            double delay = Double.parseDouble(next);
             if (delay < minDelay) {
                 minDelay = delay;
             }
@@ -47,8 +54,9 @@ public class JoinReducer extends Reducer<TextPair, Text, Text, Text> {
         }
         averageDelay = sumOfDelays / (double)countOfDelays;
 
-        String result = "Airport name = " + airportDescription + "; Min delay = " + minDelay +
-                "; Max delay = " + maxDelay + "; Average delay =  " + averageDelay + ";";
+        /*String result = "Airport name = " + airportDescription + "; Min delay = " + minDelay +
+                "; Max delay = " + maxDelay + "; Average delay =  " + averageDelay + ";";*/
+        String result = "Airport name = " + airportDescription + " TEST = " + test;
         context.write(new Text("AirportId = " + key.getDestAirportId().toString() + "; "), new Text(result));
     }
 
