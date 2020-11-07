@@ -1,4 +1,5 @@
-package com.github.varenytsiamykhailo.BigDataLabs.lab2;
+package com.github.varenytsiamykhailo.BigDataLabs.lab3;
 
 public class Runner {
+
 }
