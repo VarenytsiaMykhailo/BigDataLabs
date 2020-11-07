@@ -19,10 +19,10 @@ public class FlightsJoinMapper extends Mapper<LongWritable, Text, TextPair, Text
             FlightsParser flightsParser = new FlightsParser(value);
 
             Integer destAirportId = flightsParser.parseDestAirportId();
-
+            String delay = flightsParser.parseDelay();
 
             if (!(delay.isEmpty())) {
-                context.write(new TextPair(destAirportId, FILE_NUMBER), new Text(delay)); // key, value
+                context.write(new TextPair(destAirportId, FILE_NUMBER), new Text(delay));
             }
         }
     }

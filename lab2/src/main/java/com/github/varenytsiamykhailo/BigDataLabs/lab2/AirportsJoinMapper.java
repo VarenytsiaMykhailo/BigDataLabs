@@ -22,7 +22,7 @@ public class AirportsJoinMapper extends Mapper<LongWritable, Text, TextPair, Tex
             Integer destAirportId = airportsParser.parseDestAirportId();
             String airportDescription = airportsParser.parseAirportDescription();
 
-            context.write(new TextPair(destAirportId, FILE_NUMBER), new Text(airportDescription));
+            context.write(new TextPair(destAirportId, FILE_NUMBER), new Text(airportDescription)); // key, value
         }
     }
 }
@@ -39,8 +39,7 @@ class AirportsParser {
     }
 
     public Integer parseDestAirportId() {
-        Integer destAirportId = Integer.parseInt(columns[DEST_AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"",""));
-        return destAirportId;
+        return Integer.parseInt(columns[DEST_AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"", ""));
     }
 
     public String parseAirportDescription() {
@@ -48,7 +47,6 @@ class AirportsParser {
         for (int i = 1; i < columns.length; i++) {
             sb.append(columns[i]);
         }
-        String airportDescription = sb.toString();
-        return airportDescription;
+        return sb.toString();
     }
 }
