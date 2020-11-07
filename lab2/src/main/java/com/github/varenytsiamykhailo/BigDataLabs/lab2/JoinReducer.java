@@ -17,13 +17,15 @@ public class JoinReducer extends Reducer<TextPair, Text, Text, Text> {
         Iterator<Text> iter = values.iterator();
         String airportDescription = iter.next().toString();
 
-       /* StatisticsCalculator statisticsCalculator = new StatisticsCalculator(values);
+        StatisticsCalculator statisticsCalculator = new StatisticsCalculator(values);
 
-        String result = "Airport name = " + airportDescription + "; Min delay = " + statisticsCalculator.getMinDelay() +
-                "; Max delay = " + statisticsCalculator.getMaxDelay() + "; Average delay =  " + statisticsCalculator.getAverageDelay() + ";";
-        // Text outValue = new Text("+++++++++ call = " + call.toString() + "------------ airportDescription = " + airportDescription.toString() + "/++++++++++");
 
-*/
+        if (statisticsCalculator.getCountOfDelays() > 0) { // Iterable<Text> values может прийти пустым. Обрабатываем.
+            String result = "Airport name = " + airportDescription + "; Min delay = " + statisticsCalculator.getMinDelay() +
+                    "; Max delay = " + statisticsCalculator.getMaxDelay() + "; Average delay =  " + statisticsCalculator.getAverageDelay() + ";";
+            context.write(new Text("AirportId = " + key.getDestAirportId().toString() + "; "), new Text(result));
+        }
+/*
         double minDelay = Double.MAX_VALUE;
 
         double maxDelay = 0.0;
@@ -53,13 +55,14 @@ public class JoinReducer extends Reducer<TextPair, Text, Text, Text> {
             countOfDelays++;
         }
         averageDelay = sumOfDelays / (double)countOfDelays;
+*/
 
         /*String result = "Airport name = " + airportDescription + "; Min delay = " + minDelay +
                 "; Max delay = " + maxDelay + "; Average delay =  " + averageDelay + ";";*/
-        if (countOfDelays > 0) { // Iterable<Text> values может прийти пустым. Обрабатываем.
+       /* if (countOfDelays > 0) { // Iterable<Text> values может прийти пустым. Обрабатываем.
             String result = "Airport name = " + airportDescription + " TEST = " + test;
             context.write(new Text("AirportId = " + key.getDestAirportId().toString() + "; "), new Text(result));
-        }
+        }*/
     }
 
 }
