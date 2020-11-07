@@ -13,7 +13,6 @@ public class AirportsJoinMapper extends Mapper<LongWritable, Text, TextPair, Tex
 
     private static final Integer FILE_NUMBER = 0; // номер входного файла (для этапа Reduce)
 
-
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         if (!key.equals(new LongWritable(0))) { // Пропускаем первую строку csv файла (наименования столбцов)
@@ -26,8 +25,6 @@ public class AirportsJoinMapper extends Mapper<LongWritable, Text, TextPair, Tex
             context.write(new TextPair(destAirportId, FILE_NUMBER), new Text(airportDescription));
         }
     }
-
-
 }
 
 class AirportsParser {
