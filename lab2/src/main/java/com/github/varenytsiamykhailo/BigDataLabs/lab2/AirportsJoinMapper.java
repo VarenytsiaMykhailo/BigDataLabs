@@ -35,7 +35,7 @@ class AirportsParser {
     private String[] columns;
 
     public AirportsParser(Text value) {
-        columns = value.toString().split(",");
+        this.columns = value.toString().split(",");
     }
 
     public Integer parseDestAirportId() {
