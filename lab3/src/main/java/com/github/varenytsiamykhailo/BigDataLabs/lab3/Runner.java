@@ -7,8 +7,10 @@ import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
+import org.apache.spark.api.java.function.FlatMapFunction;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class Runner {
     public static void main(String[] args) {
@@ -18,7 +20,18 @@ public class Runner {
 
         // JavaRDD<String> lines = sc.parallelize(Arrays.asList("pandas", "i like pandas"));
 
-        JavaRDD<String> lines = sc.textFile("airports.csv");
+        JavaRDD<String> airportsData = sc.textFile("airports.csv");
+        JavaRDD<String> flightsData = sc.textFile("flights.csv");
+
+        JavaRDD<String> airportsSplittedData = airportsData.flatMap(
+                (FlatMapFunction<String, String>) s -> Arrays.stream(s.split(",")).iterator()
+        );
+
+        JavaRDD<String> flightsSplittedData = flightsData.flatMap(
+                (FlatMapFunction<String, String>) s -> Arrays.stream(s.replaceAll(" ","").split(",")).iterator()
+        );
+
+        JavaPairRDD<String, String> airportsJoinData = airportsSplittedData.mapToPair();
         //System.out.println("123");
         //lines.collect();
         System.out.println("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
