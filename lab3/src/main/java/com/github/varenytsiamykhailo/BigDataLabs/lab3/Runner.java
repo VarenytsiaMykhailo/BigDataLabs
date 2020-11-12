@@ -16,9 +16,9 @@ public class Runner {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
 
-        JavaRDD<String> lines = sc.parallelize(Arrays.asList("pandas", "i like pandas"));
+        // JavaRDD<String> lines = sc.parallelize(Arrays.asList("pandas", "i like pandas"));
 
-        //JavaRDD<String> lines = sc.textFile("war-and-peace-1.txt");
+        JavaRDD<String> lines = sc.textFile("war-and-peace-1.txt");
         //System.out.println("123");
         //lines.collect();
         System.out.println("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
