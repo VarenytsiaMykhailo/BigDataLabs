@@ -21,6 +21,7 @@ public class Runner {
         //JavaRDD<String> lines = sc.textFile("war-and-peace-1.txt");
         System.out.println("123");
         //lines.collect();
+        System.out.println("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
         System.out.println(lines.collect());
         // lines.saveAsTextFile("lab3_result");
     }
