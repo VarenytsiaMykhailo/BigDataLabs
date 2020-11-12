@@ -18,7 +18,7 @@ public class Runner {
 
         JavaRDD<String> lines = sc.parallelize(Arrays.asList("pandas", "i like pandas"));
 
-        JavaPairRDD<LongWritable, Text> data = sc.hadoopFile("war-and-peace-1.txt", TextInputFormat.class, LongWritable.class, Text.class);
+        JavaPairRDD<LongWritable, Text> data = sc.textFile("war-and-peace-1.txt", TextInputForыыmat.class, LongWritable.class, Text.class);
         System.out.println("123");
         lines.collect();
         // lines.saveAsTextFile("lab3_result");
