@@ -16,11 +16,11 @@ public class Runner {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
 
-        JavaRDD<String> lines = sc.parallelize(Arrays.asList("pandas", "i like pandas"));
+         JavaRDD<String> lines = sc.parallelize(Arrays.asList("pandas", "i like pandas"));
 
-        JavaPairRDD<LongWritable, Text> data = sc.textFile("war-and-peace-1.txt", TextInputForыыmat.class, LongWritable.class, Text.class);
+        //JavaRDD<String> lines = sc.textFile("war-and-peace-1.txt");
         System.out.println("123");
-        lines.collect();
+        //lines.collect();
         // lines.saveAsTextFile("lab3_result");
     }
 }
