@@ -17,6 +17,8 @@ public class Runner {
 
     //т.к. отсчет с нуля, то индексы на единицу меньше, чем в самом csv файле
 
+    private static final int AIRPORT_ID_COLUMN_NUMBER = 0; // DEST_AIRPORT_ID — Идентификатор аэропорта
+
     private static final int ORIGIN_AIRPORT_ID_COLUMN_NUMBER = 11; // DEST_AIRPORT_ID — Идентификатор аэропорта отлета
 
     private static final int DEST_AIRPORT_ID_COLUMN_NUMBER = 14; // DEST_AIRPORT_ID — Идентификатор аэропорта прибытия
@@ -43,6 +45,14 @@ public class Runner {
        /* JavaRDD<String> flightsSplittedData = flightsData.flatMap(
                 (FlatMapFunction<String, String>) s -> Arrays.stream(s.replaceAll(" ","").split(",")).iterator()
         );*/
+        JavaPairRDD<Long, String> airportsInfoRDD = airportsDataRDD.mapToPair(
+                s -> {
+                    String[] columns = s.split(",");
+                    Long airportId = Long.parseLong(columns[DEST_AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"", ""));
+                    return new Tuple2<>();
+                }
+        );
+
 
         JavaPairRDD<Tuple2<Long, Long>, FlightInfo> flightsInfoRDD = flightsDataRDD.filter(s -> !s.startsWith("\"YEAR\",\"QUARTER\"")).mapToPair(
                 s -> {
