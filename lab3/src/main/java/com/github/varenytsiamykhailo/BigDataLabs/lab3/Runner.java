@@ -29,10 +29,10 @@ public class Runner {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
 
-        JavaRDD<String> airportsDataRDD = sc.textFile("airports.csv");
+        JavaRDD<String> airportsDescriptionDataRDD = sc.textFile("airports.csv");
         JavaRDD<String> flightsDataRDD = sc.textFile("flights.csv");
 
-        JavaPairRDD<Long, String> airportsInfoRDD = airportsDataRDD.mapToPair(
+        JavaPairRDD<Long, String> airportsDescriptionRDD = airportsDescriptionDataRDD.mapToPair(
                 s -> {
                     String[] columns = s.split(",");
                     Long airportId = Long.parseLong(columns[AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"", ""));
@@ -57,7 +57,8 @@ public class Runner {
 
         JavaPairRDD<Tuple2<Long, Long>, FlightInfo> flightsStatisticRDD = flightsInfoRDD.reduceByKey(FlightInfo::updateStatistic);
 
-        final Broadcast<Map<Long, String>> airportsBroadcasted = sc.broadcast(airportsInfoRDD.collectAsMap());
+        Map<Long, String> airportDescriptionMap = airportsDescriptionRDD.collectAsMap(); // Выкачиваем список аэропортов в глобальный контекст (на все узлы)
+        final Broadcast<Map<Long, String>> airportsBroadcasted = sc.broadcast(airportDescriptionMap);
 
         JavaPairRDD<String, String> resultStatistic = flightsStatisticRDD.mapToPair(
                 e -> {
