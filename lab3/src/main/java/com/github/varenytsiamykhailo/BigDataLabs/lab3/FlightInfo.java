@@ -8,20 +8,16 @@ public class FlightInfo implements Serializable {
 
     private Boolean cancelled = false; // true if canceled (1.00 value in csv file)
 
-    private Integer delayedFlightsCounter = 0;
-
-    private Integer cancelledFlightsCounter = 0;
+    private Integer delayedAndCancelledFlightsCounter = 0;
 
     private Integer totalFlights = 0;
 
     public FlightInfo(String delayStr, String cancelledStr) {
         if (!delayStr.isEmpty()) {
             this.delay = Double.parseDouble(delayStr);
-            // this.delayedFlightsCounter++;
         }
         if (cancelledStr.equals("1.00")) {
             this.cancelled = true;
-            // this.cancelledFlightsCounter++;
         }
     }
 
@@ -33,27 +29,21 @@ public class FlightInfo implements Serializable {
         return cancelled;
     }
 
-    public Integer getDelayedFlightsCounter() {
-        return delayedFlightsCounter;
-    }
-
-    public Integer getCancelledFlightsCounter() {
-        return cancelledFlightsCounter;
+    public Integer getDelayedAndCancelledFlightsCounter() {
+        return delayedAndCancelledFlightsCounter;
     }
 
     public Integer getTotalFlights() {
         return totalFlights;
     }
 
-
-
     public FlightInfo updateStatistics(FlightInfo newFlightInfoForAccumulating) {
         Double newDelay = newFlightInfoForAccumulating.getDelay();
         if (newDelay > delay) {
             delay = newDelay;
         }
-        if (newFlightInfoForAccumulating.getCancelled()) {
-            this.cancelledFlightsCounter++;
+        if (newFlightInfoForAccumulating.getCancelled() || newDelay > 0.00001) {
+            this.delayedAndCancelledFlightsCounter++;
         }
 
         totalFlights++;
@@ -61,7 +51,7 @@ public class FlightInfo implements Serializable {
         return this;
     }
 
-    public Double calculateCancelledAndDelayedRatio() {
-        return cancelledFlightsCounter
+    public double calculateCancelledAndDelayedRatio() {
+        return (double) delayedAndCancelledFlightsCounter / (double) totalFlights;
     }
 }
