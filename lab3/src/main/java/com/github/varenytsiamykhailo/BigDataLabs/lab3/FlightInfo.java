@@ -14,8 +14,8 @@ public class FlightInfo implements Serializable {
         } else {
             this.delay = Double.parseDouble(delayStr);
         }
-        if (cancelledStr.equals(0.00)) {
-            
+        if (cancelledStr.equals("1.00")) {
+            canceled = true;
         }
     }
 
