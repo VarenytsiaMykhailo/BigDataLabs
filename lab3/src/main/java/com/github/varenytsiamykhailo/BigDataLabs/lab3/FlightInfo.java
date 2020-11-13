@@ -15,4 +15,20 @@ public class FlightInfo implements Serializable {
             this.delay = Double.parseDouble(delayStr);
         }
     }
+
+    public Double getDelay() {
+        return delay;
+    }
+
+    public void setDelay(Double delay) {
+        this.delay = delay;
+    }
+
+    public Boolean getCanceled() {
+        return canceled;
+    }
+
+    public void setCanceled(Boolean canceled) {
+        this.canceled = canceled;
+    }
 }
