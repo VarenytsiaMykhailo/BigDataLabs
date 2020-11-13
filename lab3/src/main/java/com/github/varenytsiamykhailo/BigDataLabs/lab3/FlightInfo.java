@@ -52,6 +52,9 @@ public class FlightInfo implements Serializable {
     }
 
     public double calculateCancelledAndDelayedRatio() {
-        return (double) delayedAndCancelledFlightsCounter / (double) totalFlights;
+        if (totalFlights == 0) // Чтобы не было NaN
+            return 0.00;
+        else
+            return (double) delayedAndCancelledFlightsCounter / (double) totalFlights;
     }
 }
