@@ -54,6 +54,8 @@ public class Runner {
                     return new Tuple2<>(new Tuple2<Long, Long>(originAirportId, destAirportId), new FlightInfo(delay, cancelled));
                 }
         );
+
+        
         //System.out.println("123");
         //lines.collect();
         System.out.println("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
