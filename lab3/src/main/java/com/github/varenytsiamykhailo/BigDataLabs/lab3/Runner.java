@@ -37,7 +37,7 @@ public class Runner {
         JavaRDD<String> airportsDescriptionDataRDD = sc.textFile(args[0]); // airports.csv
         JavaRDD<String> flightsDataRDD = sc.textFile(args[1]); // flights.csv
 
-        JavaPairRDD<Long, String> airportsDescriptionRDD = airportsDescriptionDataRDD.mapToPair(
+        JavaPairRDD<Long, String> airportsDescriptionRDD = airportsDescriptionDataRDD.filter(s -> !s.startsWith("\"YEAR\",\"QUARTER\"")).mapToPair(
                 s -> {
                     String[] columns = s.split(",");
                     Long airportId = Long.parseLong(columns[AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"", ""));
