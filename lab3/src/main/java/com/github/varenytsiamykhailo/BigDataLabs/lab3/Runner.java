@@ -34,6 +34,7 @@ public class Runner {
 
         JavaPairRDD<Tuple2<Long, Long>, String> flightsInfoRDD = flightsData.mapToPair(
                 s -> {
+                    if (s.contains(""))
                     return new Tuple2<>(new Tuple2<Long, Long>(888L, 999L), s);
                 }
         );
