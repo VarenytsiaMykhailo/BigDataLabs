@@ -4,20 +4,19 @@ import java.io.Serializable;
 
 public class FlightInfo implements Serializable {
 
-    private Double delay;
+    private Double delay = 0.0;
 
-    private Boolean canceled; // true if canceled (1.00 value in csv file)
+    private Boolean canceled = false; // true if canceled (1.00 value in csv file)
+
+    private Integer canceledFlightsCounter = 0;
 
     public FlightInfo(String delayStr, String cancelledStr) {
-        if (delayStr.isEmpty()) {
-            this.delay = 0.0;
-        } else {
+        if (!delayStr.isEmpty()) {
             this.delay = Double.parseDouble(delayStr);
         }
         if (cancelledStr.equals("1.00")) {
             this.canceled = true;
-        } else {
-            this.canceled = false;
+            this.cancelledFlightsCounter++;
         }
     }
 
@@ -29,7 +28,20 @@ public class FlightInfo implements Serializable {
         return canceled;
     }
 
-    public FlightInfo updateStatistics(FlightInfo flightInfoForAccumulating) {
-        return new FlightInfo("asd", " asd");
+    public Integer getCancelledFlightsCounter() {
+        return cancelledFlightsCounter;
+    }
+
+    public FlightInfo updateStatistics(FlightInfo newFlightInfoForAccumulating) {
+        Double newDelay = newFlightInfoForAccumulating.getDelay();
+        if (newDelay > delay) {
+            delay = newDelay;
+        }
+        if (newFlightInfoForAccumulating.getCanceled()) {
+            this.cancelledFlightsCounter
+        }
+
+
+        return this;
     }
 }
