@@ -1,4 +1,6 @@
 package com.github.varenytsiamykhailo.BigDataLabs.lab3;
 
-public class flightInfo {
+import java.io.Serializable;
+
+public class flightInfo implements Serializable {
 }
