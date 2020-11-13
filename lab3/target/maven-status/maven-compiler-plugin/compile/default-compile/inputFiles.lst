@@ -1,8 +1,3 @@
-/mnt/hgfs/github-reps/BigDataLabs/lab3/src/main/java/com/github/varenytsiamykhailo/BigDataLabs/lab2/JoinReducer.java
-/mnt/hgfs/github-reps/BigDataLabs/lab3/src/main/java/com/github/varenytsiamykhailo/BigDataLabs/lab2/ReduceSideJoinRunner.java
-/mnt/hgfs/github-reps/BigDataLabs/lab3/src/main/java/com/github/varenytsiamykhailo/BigDataLabs/lab2/AirportsJoinMapper.java
-/mnt/hgfs/github-reps/BigDataLabs/lab3/src/main/java/com/github/varenytsiamykhailo/BigDataLabs/lab2/StatisticsCalculator.java
-/mnt/hgfs/github-reps/BigDataLabs/lab3/src/main/java/com/github/varenytsiamykhailo/BigDataLabs/lab2/FlightsJoinMapper.java
-/mnt/hgfs/github-reps/BigDataLabs/lab3/src/main/java/com/github/varenytsiamykhailo/BigDataLabs/lab2/TextPair.java
-/mnt/hgfs/github-reps/BigDataLabs/lab3/src/main/java/com/github/varenytsiamykhailo/BigDataLabs/lab2/TextPairGroupingComparator.java
-/mnt/hgfs/github-reps/BigDataLabs/lab3/src/main/java/com/github/varenytsiamykhailo/BigDataLabs/lab2/TextPairPartitioner.java
+/mnt/hgfs/github-reps/BigDataLabs/lab3/src/main/java/com/github/varenytsiamykhailo/BigDataLabs/lab3/FlightInfo.java
+/mnt/hgfs/github-reps/BigDataLabs/lab3/src/main/java/com/github/varenytsiamykhailo/BigDataLabs/lab3/StatisticsCalculator.java
+/mnt/hgfs/github-reps/BigDataLabs/lab3/src/main/java/com/github/varenytsiamykhailo/BigDataLabs/lab3/Runner.java
