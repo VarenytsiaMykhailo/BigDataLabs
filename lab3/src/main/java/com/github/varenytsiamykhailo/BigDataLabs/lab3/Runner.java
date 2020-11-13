@@ -55,9 +55,15 @@ public class Runner {
                 }
         );
 
-        JavaPairRDD<Tuple2<Long, Long>, FlightInfo> flightsStatisticRDD = flightsInfoRDD.reduceByKey(FlightInfo::updateStatistics);
+        JavaPairRDD<Tuple2<Long, Long>, FlightInfo> flightsStatisticRDD = flightsInfoRDD.reduceByKey(FlightInfo::updateStatistic);
 
-
+        JavaPairRDD<String, String> resultStatistic = flightsStatisticRDD.mapToPair(
+                e -> {
+                    String name = " " + e._1._1 + e._1._2 + " ";
+                    String resStat = " total flights: " + e._2.getTotalFlights() + " max delay: " + e._2.getDelay() + " ratio: " + e._2.calculateCancelledAndDelayedRatio();
+                    return new Tuple2<>(name, resStat);
+                }
+        );
 
         //System.out.println("123");
         //lines.collect();

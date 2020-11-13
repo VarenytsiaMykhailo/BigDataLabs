@@ -37,7 +37,7 @@ public class FlightInfo implements Serializable {
         return totalFlights;
     }
 
-    public FlightInfo updateStatistics(FlightInfo newFlightInfoForAccumulating) {
+    public FlightInfo updateStatistic(FlightInfo newFlightInfoForAccumulating) {
         Double newDelay = newFlightInfoForAccumulating.getDelay();
         if (newDelay > delay) {
             delay = newDelay;
