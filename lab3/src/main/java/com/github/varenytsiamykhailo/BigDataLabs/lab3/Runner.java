@@ -14,6 +14,14 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 public class Runner {
+
+    //т.к. отсчет с нуля, то индексы на единицу меньше, чем в самом csv файле
+    private static final int DEST_AIRPORT_ID_COLUMN_NUMBER = 14; // DEST_AIRPORT_ID — Идентификатор аэропорта прибытия
+
+    private static final int DEST_AIRPORT_ID_COLUMN_NUMBER = 14; // DEST_AIRPORT_ID — Идентификатор аэропорта прибытия
+
+    private static final int ARR_DELAY_NEW_COLUMN_NUMBER = 18; // ARR_DELAY_NEW - разница в минутах между расчетным временем приземления и реальным (>=0)
+
     public static void main(String[] args) {
 
         SparkConf conf = new SparkConf().setAppName("lab3");
@@ -34,6 +42,7 @@ public class Runner {
 
         JavaPairRDD<Tuple2<Long, Long>, FlightInfo> flightsInfoRDD = flightsData.filter(s -> !s.startsWith("\"YEAR\",\"QUARTER\"")).mapToPair(
                 s -> {
+                    String[] columns = s.replaceAll(" ","").split(",");
                     return new Tuple2<>(new Tuple2<Long, Long>(888L, 999L), new FlightInfo(s));
                 }
         );

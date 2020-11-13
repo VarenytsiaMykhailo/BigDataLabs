@@ -6,7 +6,7 @@ public class FlightInfo implements Serializable {
 
     private Double delay;
 
-    private Integer canceled; // 1 if canceled
+    private Boolean canceled; // true if canceled (1.00 value in csv file)
 
     public FlightInfo(String str) {
 
