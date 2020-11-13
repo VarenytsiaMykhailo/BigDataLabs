@@ -57,6 +57,8 @@ public class Runner {
 
         JavaPairRDD<Tuple2<Long, Long>, FlightInfo> flightsStatisticRDD = flightsInfoRDD.reduceByKey(FlightInfo::updateStatistics);
 
+
+
         //System.out.println("123");
         //lines.collect();
         System.out.println("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
