@@ -34,8 +34,10 @@ public class Runner {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
 
-        JavaRDD<String> airportsDescriptionDataRDD = sc.textFile(args[0]); // airports.csv
-        JavaRDD<String> flightsDataRDD = sc.textFile(args[1]); // flights.csv
+        // JavaRDD<String> airportsDescriptionDataRDD = sc.textFile(args[0]); // airports.csv
+        // JavaRDD<String> flightsDataRDD = sc.textFile(args[1]); // flights.csv
+        JavaRDD<String> airportsDescriptionDataRDD = sc.textFile("airports.csv");
+        JavaRDD<String> flightsDataRDD = sc.textFile("flights.csv");
 
         JavaPairRDD<Long, String> airportsDescriptionRDD = airportsDescriptionDataRDD.filter(s -> !s.startsWith("\"Code\",\"Description\"")).mapToPair(
                 s -> {
@@ -75,6 +77,7 @@ public class Runner {
                 }
         );
 
-        resultStatistic.saveAsTextFile(args[2]);
+        // resultStatistic.saveAsTextFile(args[2]);
+        resultStatistic.saveAsTextFile("lab3_final");
     }
 }
