@@ -47,11 +47,11 @@ public class Runner {
         JavaPairRDD<Tuple2<Long, Long>, FlightInfo> flightsInfoRDD = flightsData.filter(s -> !s.startsWith("\"YEAR\",\"QUARTER\"")).mapToPair(
                 s -> {
                     String[] columns = s.replaceAll(" ","").split(",");
-                    Long destAirportId =  Long.parseLong(columns[DEST_AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"",""));
                     Long originAirportId =  Long.parseLong(columns[ORIGIN_AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"",""));
+                    Long destAirportId =  Long.parseLong(columns[DEST_AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"",""));
                     String delay = columns[ARR_DELAY_NEW_COLUMN_NUMBER];
                     String cancelled = columns[CANCELLED_COLUMN_NUMBER];
-                    return new Tuple2<>(new Tuple2<Long, Long>(888L, 999L), new FlightInfo(delay, cancelled));
+                    return new Tuple2<>(new Tuple2<Long, Long>(originAirportId, destAirportId), new FlightInfo(delay, cancelled));
                 }
         );
         //System.out.println("123");
