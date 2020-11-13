@@ -1,2 +1,4 @@
-package com.github.varenytsiamykhailo.BigDataLabs.lab3;public class FlightStatisticsCalculator {
+package com.github.varenytsiamykhailo.BigDataLabs.lab3;
+
+public class FlightStatisticsCalculator {
 }
