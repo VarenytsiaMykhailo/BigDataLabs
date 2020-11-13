@@ -29,4 +29,7 @@ public class FlightInfo implements Serializable {
         return canceled;
     }
 
+    public FlightInfo updateStatistics(FlightInfo flightInfoForAccumulating) {
+        return new FlightInfo("asd", " asd");
+    }
 }

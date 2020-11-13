@@ -33,8 +33,8 @@ public class Runner {
 
         // JavaRDD<String> lines = sc.parallelize(Arrays.asList("pandas", "i like pandas"));
 
-        JavaRDD<String> airportsData = sc.textFile("airports.csv");
-        JavaRDD<String> flightsData = sc.textFile("flights.csv");
+        JavaRDD<String> airportsDataRDD = sc.textFile("airports.csv");
+        JavaRDD<String> flightsDataRDD = sc.textFile("flights.csv");
 
 //        JavaRDD<String> airportsSplittedData = airportsData.flatMap(
 //                (FlatMapFunction<String, String>) s -> Arrays.stream(s.split(",")).iterator()
@@ -44,7 +44,7 @@ public class Runner {
                 (FlatMapFunction<String, String>) s -> Arrays.stream(s.replaceAll(" ","").split(",")).iterator()
         );*/
 
-        JavaPairRDD<Tuple2<Long, Long>, FlightInfo> flightsInfoRDD = flightsData.filter(s -> !s.startsWith("\"YEAR\",\"QUARTER\"")).mapToPair(
+        JavaPairRDD<Tuple2<Long, Long>, FlightInfo> flightsInfoRDD = flightsDataRDD.filter(s -> !s.startsWith("\"YEAR\",\"QUARTER\"")).mapToPair(
                 s -> {
                     String[] columns = s.replaceAll(" ","").split(",");
                     Long originAirportId =  Long.parseLong(columns[ORIGIN_AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"",""));
@@ -55,6 +55,7 @@ public class Runner {
                 }
         );
 
+        JavaPairRDD<Tuple2<Long, Long>, FlightInfo> flightsStatisticRDD = flightsInfoRDD.reduceByKey(FlightInfo::updateStatistics);
 
         //System.out.println("123");
         //lines.collect();
