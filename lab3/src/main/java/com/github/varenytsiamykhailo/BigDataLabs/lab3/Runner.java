@@ -33,26 +33,20 @@ public class Runner {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
 
-        // JavaRDD<String> lines = sc.parallelize(Arrays.asList("pandas", "i like pandas"));
-
         JavaRDD<String> airportsDataRDD = sc.textFile("airports.csv");
         JavaRDD<String> flightsDataRDD = sc.textFile("flights.csv");
 
-//        JavaRDD<String> airportsSplittedData = airportsData.flatMap(
-//                (FlatMapFunction<String, String>) s -> Arrays.stream(s.split(",")).iterator()
-//        );
-
-       /* JavaRDD<String> flightsSplittedData = flightsData.flatMap(
-                (FlatMapFunction<String, String>) s -> Arrays.stream(s.replaceAll(" ","").split(",")).iterator()
-        );*/
         JavaPairRDD<Long, String> airportsInfoRDD = airportsDataRDD.mapToPair(
                 s -> {
                     String[] columns = s.split(",");
                     Long airportId = Long.parseLong(columns[AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"", ""));
-                    return new Tuple2<>();
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 1; i < columns.length; i++) {
+                        sb.append(columns[i]);
+                    }
+                    return new Tuple2<>(airportId, sb.toString());
                 }
         );
-
 
         JavaPairRDD<Tuple2<Long, Long>, FlightInfo> flightsInfoRDD = flightsDataRDD.filter(s -> !s.startsWith("\"YEAR\",\"QUARTER\"")).mapToPair(
                 s -> {
