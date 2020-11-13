@@ -42,7 +42,6 @@ public class Runner {
         JavaPairRDD<Long, String> airportsDescriptionRDD = airportsDescriptionDataRDD.filter(s -> !s.startsWith("Code")).mapToPair(
                 s -> {
                     String[] columns = s.split(",");
-                    System.out.println("WWWWWWWWWWWWWWWWWWWWWWW____________________ " + s);
                     Long airportId = Long.parseLong(columns[AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"", ""));
                     StringBuilder sb = new StringBuilder();
                     for (int i = 1; i < columns.length; i++) {
