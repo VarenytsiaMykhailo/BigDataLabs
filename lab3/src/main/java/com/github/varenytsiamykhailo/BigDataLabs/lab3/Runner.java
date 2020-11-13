@@ -61,6 +61,8 @@ public class Runner {
 
         JavaPairRDD<Tuple2<Long, Long>, FlightInfo> flightsStatisticRDD = flightsInfoRDD.reduceByKey(FlightInfo::updateStatistic);
 
+        final Broadcast<Map<Long, String>> airportsBroadcasted = sc.broadcast(airportsInfoRDD);
+        
         JavaPairRDD<String, String> resultStatistic = flightsStatisticRDD.mapToPair(
                 e -> {
                     String name = " " + e._1._1 + e._1._2 + " ";
@@ -69,10 +71,6 @@ public class Runner {
                 }
         );
 
-        //System.out.println("123");
-        //lines.collect();
-        System.out.println("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
-        //System.out.println(lines.collect());
         resultStatistic.saveAsTextFile("test_result");
     }
 }
