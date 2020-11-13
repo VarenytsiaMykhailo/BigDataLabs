@@ -69,6 +69,6 @@ public class Runner {
         //lines.collect();
         System.out.println("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
         //System.out.println(lines.collect());
-        flightsInfoRDD.saveAsTextFile("test_result");
+        resultStatistic.saveAsTextFile("test_result");
     }
 }
