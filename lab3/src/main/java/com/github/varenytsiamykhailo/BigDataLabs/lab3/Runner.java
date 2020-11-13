@@ -23,7 +23,7 @@ public class Runner {
 
     private static final int ARR_DELAY_NEW_COLUMN_NUMBER = 18; // ARR_DELAY_NEW - разница в минутах между расчетным временем приземления и реальным (>=0)
 
-    private static final int CANCELLED_COLUMN_NUMBER = 18; // ARR_DELAY_NEW - разница в минутах между расчетным временем приземления и реальным (>=0)
+    private static final int CANCELLED_COLUMN_NUMBER = 19; // CANCELLED — признак отмены рейса (1 в случае отмены)
 
 
     public static void main(String[] args) {
@@ -50,7 +50,7 @@ public class Runner {
                     Long destAirportId =  Long.parseLong(columns[DEST_AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"",""));
                     Long originAirportId =  Long.parseLong(columns[ORIGIN_AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"",""));
                     String delay = columns[ARR_DELAY_NEW_COLUMN_NUMBER];
-                    String cancelled = columns[];
+                    String cancelled = columns[CANCELLED_COLUMN_NUMBER];
                     return new Tuple2<>(new Tuple2<Long, Long>(888L, 999L), new FlightInfo(delay));
                 }
         );
