@@ -1,4 +1,4 @@
 package com.github.varenytsiamykhailo.BigDataLabs.lab3;
 
-public class FlightStatisticsCalculator {
+public class StatisticsCalculator {
 }
