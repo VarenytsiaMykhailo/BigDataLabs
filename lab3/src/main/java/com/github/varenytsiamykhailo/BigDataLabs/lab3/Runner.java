@@ -26,10 +26,10 @@ public class Runner {
 
     public static void main(String[] args) {
 
-        if (args.length != 3) {
+        /*if (args.length != 3) {
             System.err.println("Use correct paths: <input path A> <input path B> <output path>");
             System.exit(-1);
-        }
+        }*/
 
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
