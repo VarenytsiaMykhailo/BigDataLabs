@@ -17,7 +17,7 @@ public class Runner {
 
     //т.к. отсчет с нуля, то индексы на единицу меньше, чем в самом csv файле
 
-    private static final int AIRPORT_ID_COLUMN_NUMBER = 0; // DEST_AIRPORT_ID — Идентификатор аэропорта
+    private static final int AIRPORT_ID_COLUMN_NUMBER = 0; // AIRPORT_ID — Идентификатор аэропорта (code) в airports.csv
 
     private static final int ORIGIN_AIRPORT_ID_COLUMN_NUMBER = 11; // DEST_AIRPORT_ID — Идентификатор аэропорта отлета
 
@@ -48,7 +48,7 @@ public class Runner {
         JavaPairRDD<Long, String> airportsInfoRDD = airportsDataRDD.mapToPair(
                 s -> {
                     String[] columns = s.split(",");
-                    Long airportId = Long.parseLong(columns[DEST_AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"", ""));
+                    Long airportId = Long.parseLong(columns[AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"", ""));
                     return new Tuple2<>();
                 }
         );
