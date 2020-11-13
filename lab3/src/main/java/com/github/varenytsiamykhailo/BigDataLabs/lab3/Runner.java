@@ -1,17 +1,13 @@
 package com.github.varenytsiamykhailo.BigDataLabs.lab3;
 
-import org.apache.hadoop.io.LongWritable;
-import org.apache.hadoop.io.Text;
-import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
-import org.apache.spark.api.java.function.FlatMapFunction;
+import org.apache.spark.broadcast.Broadcast;
 import scala.Tuple2;
 
-import java.util.Arrays;
-import java.util.Iterator;
+import java.util.Map;
 
 public class Runner {
 
@@ -61,8 +57,8 @@ public class Runner {
 
         JavaPairRDD<Tuple2<Long, Long>, FlightInfo> flightsStatisticRDD = flightsInfoRDD.reduceByKey(FlightInfo::updateStatistic);
 
-        final Broadcast<Map<Long, String>> airportsBroadcasted = sc.broadcast(airportsInfoRDD);
-        
+        final Broadcast<Map<Long, String>> airportsBroadcasted = sc.broadcast(airportsInfoRDD.collectAsMap());
+
         JavaPairRDD<String, String> resultStatistic = flightsStatisticRDD.mapToPair(
                 e -> {
                     String name = " " + e._1._1 + e._1._2 + " ";
