@@ -23,6 +23,9 @@ public class Runner {
 
     private static final int ARR_DELAY_NEW_COLUMN_NUMBER = 18; // ARR_DELAY_NEW - разница в минутах между расчетным временем приземления и реальным (>=0)
 
+    private static final int CANCELLED_COLUMN_NUMBER = 18; // ARR_DELAY_NEW - разница в минутах между расчетным временем приземления и реальным (>=0)
+
+
     public static void main(String[] args) {
 
         SparkConf conf = new SparkConf().setAppName("lab3");
