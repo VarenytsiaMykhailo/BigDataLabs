@@ -15,7 +15,9 @@ public class FlightInfo implements Serializable {
             this.delay = Double.parseDouble(delayStr);
         }
         if (cancelledStr.equals("1.00")) {
-            canceled = true;
+            this.canceled = true;
+        } else {
+            this.canceled = false;
         }
     }
 
@@ -23,15 +25,8 @@ public class FlightInfo implements Serializable {
         return delay;
     }
 
-    public void setDelay(Double delay) {
-        this.delay = delay;
-    }
-
     public Boolean getCanceled() {
         return canceled;
     }
 
-    public void setCanceled(Boolean canceled) {
-        this.canceled = canceled;
-    }
 }

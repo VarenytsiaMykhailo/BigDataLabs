@@ -51,7 +51,7 @@ public class Runner {
                     Long originAirportId =  Long.parseLong(columns[ORIGIN_AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"",""));
                     String delay = columns[ARR_DELAY_NEW_COLUMN_NUMBER];
                     String cancelled = columns[CANCELLED_COLUMN_NUMBER];
-                    return new Tuple2<>(new Tuple2<Long, Long>(888L, 999L), new FlightInfo(delay));
+                    return new Tuple2<>(new Tuple2<Long, Long>(888L, 999L), new FlightInfo(delay, cancelled));
                 }
         );
         //System.out.println("123");
