@@ -57,12 +57,14 @@ public class Runner {
 
         JavaPairRDD<Tuple2<Long, Long>, FlightInfo> flightsStatisticRDD = flightsInfoRDD.reduceByKey(FlightInfo::updateStatistic);
 
-        Map<Long, String> airportDescriptionMap = airportsDescriptionRDD.collectAsMap(); // Выкачиваем список аэропортов в глобальный контекст (на все узлы)
-        final Broadcast<Map<Long, String>> airportsBroadcasted = sc.broadcast(airportDescriptionMap);
+        Map<Long, String> airportsDescriptionMap = airportsDescriptionRDD.collectAsMap(); // Выкачиваем список аэропортов в глобальный контекст (на все узлы)
+        final Broadcast<Map<Long, String>> airportsDescriptionBroadcasted = sc.broadcast(airportsDescriptionMap);
 
         JavaPairRDD<String, String> resultStatistic = flightsStatisticRDD.mapToPair(
                 e -> {
-                    String name = " " + e._1._1 + e._1._2 + " ";
+                    String originAirportName = airportsDescriptionBroadcasted.value().get(e._1._1);
+                    String destAirportName = airportsDescriptionBroadcasted.value().get(e._1._2);
+                    String name =  originAirportName + " ===> " + destAirportName;
                     String resStat = " total flights: " + e._2.getTotalFlights() + " max delay: " + e._2.getDelay() + " ratio: " + e._2.calculateCancelledAndDelayedRatio();
                     return new Tuple2<>(name, resStat);
                 }

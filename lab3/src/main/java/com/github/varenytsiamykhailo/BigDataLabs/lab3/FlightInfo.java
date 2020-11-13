@@ -10,7 +10,7 @@ public class FlightInfo implements Serializable {
 
     private Integer delayedAndCancelledFlightsCounter = 0;
 
-    private Integer totalFlights = 0;
+    private Integer totalFlights = 1; // 1 - т.к. созданный экземпляр уже нужно посчитать
 
     public FlightInfo(String delayStr, String cancelledStr) {
         if (!delayStr.isEmpty()) {
@@ -52,9 +52,6 @@ public class FlightInfo implements Serializable {
     }
 
     public double calculateCancelledAndDelayedRatio() {
-        if (totalFlights == 0) // Чтобы не было NaN
-            return 0.00;
-        else
-            return (double) delayedAndCancelledFlightsCounter / (double) totalFlights;
+        return (double) delayedAndCancelledFlightsCounter / (double) totalFlights;
     }
 }
