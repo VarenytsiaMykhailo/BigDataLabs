@@ -55,7 +55,7 @@ public class Runner {
                 }
         );
 
-        
+
         //System.out.println("123");
         //lines.collect();
         System.out.println("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
