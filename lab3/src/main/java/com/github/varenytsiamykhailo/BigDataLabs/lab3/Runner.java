@@ -16,9 +16,10 @@ import java.util.Iterator;
 public class Runner {
 
     //т.к. отсчет с нуля, то индексы на единицу меньше, чем в самом csv файле
-    private static final int DEST_AIRPORT_ID_COLUMN_NUMBER = 14; // DEST_AIRPORT_ID — Идентификатор аэропорта прибытия
 
-    private static final int ORIGIN_AIRPORT_ID_COLUMN_NUMBER = 14; // DEST_AIRPORT_ID — Идентификатор аэропорта прибытия
+    private static final int ORIGIN_AIRPORT_ID_COLUMN_NUMBER = 11; // DEST_AIRPORT_ID — Идентификатор аэропорта отлета
+
+    private static final int DEST_AIRPORT_ID_COLUMN_NUMBER = 14; // DEST_AIRPORT_ID — Идентификатор аэропорта прибытия
 
     private static final int ARR_DELAY_NEW_COLUMN_NUMBER = 18; // ARR_DELAY_NEW - разница в минутах между расчетным временем приземления и реальным (>=0)
 
@@ -43,6 +44,9 @@ public class Runner {
         JavaPairRDD<Tuple2<Long, Long>, FlightInfo> flightsInfoRDD = flightsData.filter(s -> !s.startsWith("\"YEAR\",\"QUARTER\"")).mapToPair(
                 s -> {
                     String[] columns = s.replaceAll(" ","").split(",");
+                    Long destAirportId =  Long.parseLong(columns[DEST_AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"",""));
+                    Long originAirportId =  Long.parseLong(columns[ORIGIN_AIRPORT_ID_COLUMN_NUMBER].replaceAll("\"",""));
+                    String delay = columns[ARR_DELAY_NEW_COLUMN_NUMBER];
                     return new Tuple2<>(new Tuple2<Long, Long>(888L, 999L), new FlightInfo(s));
                 }
         );
