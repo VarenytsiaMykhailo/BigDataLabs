@@ -32,15 +32,16 @@ public class Runner {
                 (FlatMapFunction<String, String>) s -> Arrays.stream(s.replaceAll(" ","").split(",")).iterator()
         );*/
 
-        JavaPairRDD<Tuple2<Long, Long>, flightInfo> flightsStatistic = flightsData.mapToPair(
-                s -> {
-                    
-                }
+        JavaPairRDD<Tuple2<Long, Long>, String> flightsInfoRDD = flightsData.flatMapToPair(
+                e -> {
+                    if (e._1.get() != 0) {
+
+                    }
         );
         //System.out.println("123");
         //lines.collect();
         System.out.println("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
         //System.out.println(lines.collect());
-        lines.saveAsTextFile("test_result");
+        flightsInfoRDD.saveAsTextFile("test_result");
     }
 }
