@@ -10,7 +10,7 @@ public class TestResult {
     private final String TEST_NAME = "testName";
     private final String EXPECTED_RESULT = "expectedResult";
     private final String TEST_PARAMS = "params";
-    private final String IS_SUCCESSFUL = "isSuccessful";
+    private final String IS_SUCCESSFUL_TEST = "isSuccessfulTest";
 
     private String testName;
 
