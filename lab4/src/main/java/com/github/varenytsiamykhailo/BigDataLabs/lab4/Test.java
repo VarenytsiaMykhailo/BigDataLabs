@@ -12,12 +12,12 @@ public class Test {
     @JsonProperty(PACKAGE_ID)
     private int packageId;
 
-    @JsonProperty(TEST_RESULT)
-    private TestResult test;
-
     @JsonProperty(JS_SCRIPT)
     private String jsScript;
 
     @JsonProperty(FUNCTION_NAME)
     private String functionName;
+
+    @JsonProperty(TEST_RESULT)
+    private TestResult testResult;
 }
