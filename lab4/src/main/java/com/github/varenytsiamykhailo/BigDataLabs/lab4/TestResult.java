@@ -9,29 +9,29 @@ public class TestResult {
 
     private final String TEST_NAME = "testName";
     private final String EXPECTED_RESULT = "expectedResult";
-    private final String PARAMS = "params";
+    private final String TEST_PARAMS = "params";
     private final String IS_SUCCESSFUL = "isSuccessful";
 
     private String testName;
 
     private String expectedResult;
 
-    private ArrayList<Integer> params;
+    private ArrayList<Integer> testParams;
 
     private boolean isSuccessfulTest;
 
-    public TestResult(String testName, String expectedResult, ArrayList<Integer> params, boolean isSuccessfulTest) {
+    public TestResult(String testName, String expectedResult, ArrayList<Integer> testParams, boolean isSuccessfulTest) {
         this.testName = testName;
         this.expectedResult = expectedResult;
-        this.params = params;
+        this.testParams = testParams;
         this.isSuccessfulTest = isSuccessfulTest;
     }
 
     @JsonCreator
-    public TestResult(@JsonProperty(TEST_NAME) String testName, @JsonProperty(EXPECTED_RESULT) String expectedResult, @JsonProperty(PARAMS) ArrayList<Integer> params) {
+    public TestResult(@JsonProperty(TEST_NAME) String testName, @JsonProperty(EXPECTED_RESULT) String expectedResult, @JsonProperty(TEST_PARAMS) ArrayList<Integer> testParams) {
         this.testName = testName;
         this.expectedResult = expectedResult;
-        this.params = params;
+        this.testParams = testParams;
     }
 
     public String getTestName() {
@@ -42,8 +42,8 @@ public class TestResult {
         return expectedResult;
     }
 
-    public ArrayList<Integer> getParams() {
-        return params;
+    public ArrayList<Integer> getTestParams() {
+        return testParams;
     }
 
     public boolean isSuccessfulTest() {
