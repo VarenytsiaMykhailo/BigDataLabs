@@ -15,6 +15,7 @@ public class HttpServer {
 
     public void run() {
 
+        // Инициализация http сервера
         ActorSystem system = ActorSystem.create("s");
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
