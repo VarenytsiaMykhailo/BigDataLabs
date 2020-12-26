@@ -30,4 +30,20 @@ public class Test {
         this.functionName = functionName;
         this.testResult = testResult;
     }
+
+    public Integer getPackageId() {
+        return packageId;
+    }
+
+    public String getJsScript() {
+        return jsScript;
+    }
+
+    public String getFunctionName() {
+        return functionName;
+    }
+
+    public TestResult getTestResult() {
+        return testResult;
+    }
 }
