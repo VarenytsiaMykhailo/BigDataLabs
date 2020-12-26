@@ -12,7 +12,7 @@ public class Test {
     @JsonProperty(PACKAGE_ID)
     private int packageId;
 
-    @JsonProperty(TEST)
+    @JsonProperty(TEST_RESULT)
     private TestResult test;
 
     @JsonProperty(JS_SCRIPT)
