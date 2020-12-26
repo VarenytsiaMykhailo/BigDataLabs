@@ -47,7 +47,7 @@ public class HttpServer {
         System.in.read();
         binding
                 .thenCompose(ServerBinding::unbind)
-                .thenAccept(unbound -> system.terminate());
+                .thenAccept(unbound -> actorSystem.terminate());
     }
 
     private class MainHttp {
