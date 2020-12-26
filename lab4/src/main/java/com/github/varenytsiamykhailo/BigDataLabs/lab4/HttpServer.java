@@ -16,6 +16,10 @@ import java.util.concurrent.CompletionStage;
 
 public class HttpServer {
 
+    private String host;
+
+    private int port;
+
     public void run() {
 
         // Инициализация http сервера
@@ -25,11 +29,11 @@ public class HttpServer {
 
         MainHttp mainHttp = new MainHttp(actorSystem);
 
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = mainHttp.createRoute(system).flow(system, materializer);
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = mainHttp.createRoute().flow(actorSystem, materializer);
 
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
-                ConnectHttp.toHost("localhost", 8080),
+                ConnectHttp.toHost(host, port),
                 materializer
         );
         System.out.println("Server online at http://localhost:8080/\nPress RETURN to stop...");
@@ -52,7 +56,6 @@ public class HttpServer {
         public MainHttp(ActorSystem actorSystem) {
             this.actorSystem = actorSystem;
             setActors();
-
         }
 
         private void setActors() {
