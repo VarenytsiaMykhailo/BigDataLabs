@@ -7,6 +7,11 @@ import java.util.ArrayList;
 
 public class TestResult {
 
+    private final String TEST_NAME = "testName";
+    private final String EXPECTED_RESULT = "expectedResult";
+    private final String PARAMS = "params";
+    private final String IS_SUCCESSFUL = "isSuccessful";
+
     private String testName;
 
     private String expectedResult;
@@ -23,7 +28,7 @@ public class TestResult {
     }
 
     @JsonCreator
-    public TestResult(@JsonProperty("testName") String testName, @JsonProperty("expectedResult") String expectedResult, @JsonProperty("params") ArrayList<Integer> params) {
+    public TestResult(@JsonProperty(TEST_NAME) String testName, @JsonProperty("expectedResult") String expectedResult, @JsonProperty("params") ArrayList<Integer> params) {
         this.testName = testName;
         this.expectedResult = expectedResult;
         this.params = params;
