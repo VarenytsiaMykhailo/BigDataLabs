@@ -56,7 +56,7 @@ public class HttpServer {
         }
 
         private void setActors() {
-            mainActor = actorSystem.actorOf(Props.create(StoreActor.class), "StoreActor");
+            mainActor = actorSystem.actorOf(Props.create(MainActor.class), "MainActor");
             storeActor = actorSystem.actorOf(Props.create(StoreActor.class), "StoreActor");
 
         }
