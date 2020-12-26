@@ -15,18 +15,18 @@ public class TestResult {
 
     private boolean isSuccessfulTest;
 
-    public TestResult(@JsonProperty("testName") String testName, @JsonProperty("expectedResult") String expectedResult, @JsonProperty("params") ArrayList<Integer> params, boolean isSuccessfulTest) {
+    public TestResult(String testName, String expectedResult, ArrayList<Integer> params, boolean isSuccessfulTest) {
         this.testName = testName;
         this.expectedResult = expectedResult;
         this.params = params;
         this.isSuccessfulTest = isSuccessfulTest;
     }
 
-    public TestResult(String testName, String expectedResult, ArrayList<Integer> params, boolean isSuccessfulTest) {
+    @JsonCreator
+    public TestResult(@JsonProperty("testName") String testName, @JsonProperty("expectedResult") String expectedResult, @JsonProperty("params") ArrayList<Integer> params) {
         this.testName = testName;
         this.expectedResult = expectedResult;
         this.params = params;
-        this.isSuccessfulTest = isSuccessfulTest;
     }
 
     public String getTestName() {
