@@ -22,7 +22,8 @@ public class Test {
     private TestResult testResult;
 
     public Test(@JsonProperty(PACKAGE_ID) Integer packageId,
-                @JsonProperty(JS_SCRIPT) String jsScript, String functionName, TestResult testResult) {
+                @JsonProperty(JS_SCRIPT) String jsScript,
+                @JsonProperty(FUNCTION_NAME) String functionName, TestResult testResult) {
         this.packageId = packageId;
         this.jsScript = jsScript;
         this.functionName = functionName;
