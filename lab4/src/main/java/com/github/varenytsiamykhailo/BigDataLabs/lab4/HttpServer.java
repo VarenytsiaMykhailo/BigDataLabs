@@ -20,6 +20,11 @@ public class HttpServer {
 
     private int port;
 
+    public HttpServer(String host, int port) {
+        this.host = host;
+        this.port = port;
+    }
+
     public void run() {
 
         // Инициализация http сервера
@@ -36,6 +41,8 @@ public class HttpServer {
                 ConnectHttp.toHost(host, port),
                 materializer
         );
+
+
         System.out.println("Server online at http://localhost:8080/\nPress RETURN to stop...");
         System.in.read();
         binding
