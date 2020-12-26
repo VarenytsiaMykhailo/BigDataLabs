@@ -10,7 +10,7 @@ public class Test {
     private final String TEST_RESULT = "testResult";
 
     @JsonProperty(PACKAGE_ID)
-    private int packageId;
+    private Integer packageId;
 
     @JsonProperty(JS_SCRIPT)
     private String jsScript;
@@ -21,7 +21,7 @@ public class Test {
     @JsonProperty(TEST_RESULT)
     private TestResult testResult;
 
-    public Test(int packageId, String jsScript, String functionName, TestResult testResult) {
+    public Test(Integer packageId, String jsScript, String functionName, TestResult testResult) {
         this.packageId = packageId;
         this.jsScript = jsScript;
         this.functionName = functionName;
