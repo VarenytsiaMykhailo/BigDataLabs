@@ -1,2 +1,4 @@
-package com.github.varenytsiamykhailo.BigDataLabs.lab4;public class AppRunner {
+package com.github.varenytsiamykhailo.BigDataLabs.lab4;
+
+public class AppRunner {
 }
