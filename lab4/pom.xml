@@ -17,17 +17,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-actor-typed_2.13</artifactId>
-            <version>${akka.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
-        </dependency>
 
         <dependency>
             <groupId>com.typesafe.akka</groupId>
