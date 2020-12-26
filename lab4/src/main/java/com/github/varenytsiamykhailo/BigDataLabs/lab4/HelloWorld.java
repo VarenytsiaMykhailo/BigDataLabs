@@ -1,4 +1,7 @@
 package com.github.varenytsiamykhailo.BigDataLabs.lab4;
 
-public class HelloWorld {
+import akka.actor.typed.java
+
+public class HelloWorld extends AbstractBehavior<HelloWorld.Command> {
+
 }
