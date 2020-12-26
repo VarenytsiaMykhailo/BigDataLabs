@@ -9,6 +9,7 @@ import akka.http.javadsl.Http;
 import akka.http.javadsl.ServerBinding;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
+import akka.http.javadsl.server.Route;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 
@@ -68,6 +69,10 @@ public class HttpServer {
             mainActor = actorSystem.actorOf(Props.create(MainActor.class), "MainActor");
             storeActor = actorSystem.actorOf(Props.create(StoreActor.class), "StoreActor");
             testExecutionActor = actorSystem.actorOf(Props.create(TestExecutionActor.class), "TestExecutionActor");
+        }
+
+        private Route createRoute() {
+            
         }
 
     }
