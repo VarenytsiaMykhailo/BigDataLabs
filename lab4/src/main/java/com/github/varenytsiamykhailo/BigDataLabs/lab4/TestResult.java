@@ -20,7 +20,10 @@ public class TestResult {
 
     private boolean isSuccessfulTest;
 
-    public TestResult(String testName, String expectedResult, ArrayList<Integer> testParams, boolean isSuccessfulTest) {
+    public TestResult(String testName,
+                      String expectedResult,
+                      ArrayList<Integer> testParams,
+                      boolean isSuccessfulTest) {
         this.testName = testName;
         this.expectedResult = expectedResult;
         this.testParams = testParams;
@@ -28,7 +31,9 @@ public class TestResult {
     }
 
     @JsonCreator
-    public TestResult(@JsonProperty(TEST_NAME) String testName, @JsonProperty(EXPECTED_RESULT) String expectedResult, @JsonProperty(TEST_PARAMS) ArrayList<Integer> testParams) {
+    public TestResult(@JsonProperty(TEST_NAME) String testName,
+                      @JsonProperty(EXPECTED_RESULT) String expectedResult,
+                      @JsonProperty(TEST_PARAMS) ArrayList<Integer> testParams) {
         this.testName = testName;
         this.expectedResult = expectedResult;
         this.testParams = testParams;
