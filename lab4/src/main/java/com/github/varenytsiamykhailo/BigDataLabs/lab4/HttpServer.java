@@ -10,6 +10,7 @@ import akka.http.javadsl.ServerBinding;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.stream.ActorMaterializer;
+import akka.stream.javadsl.Flow;
 
 import java.util.concurrent.CompletionStage;
 
@@ -18,14 +19,13 @@ public class HttpServer {
     public void run() {
 
         // Инициализация http сервера
-        ActorSystem actorSystem = ActorSystem.create("s");
+        ActorSystem actorSystem = ActorSystem.create("actorSystem");
         final Http http = Http.get(actorSystem);
         final ActorMaterializer materializer = ActorMaterializer.create(actorSystem);
 
-        MainHttp instance = new MainHttp(actorSystem);
+        MainHttp mainHttp = new MainHttp(actorSystem);
 
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow =
-                instance.createRoute(system).flow(system, materializer);
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = mainHttp.createRoute(system).flow(system, materializer);
 
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
