@@ -83,7 +83,7 @@ public class HttpServer {
                     }))
                     .orElse(post(() ->
                             entity(Jackson.unmarshaller(Package.class), message -> {
-                                System.out.println("Run actor");
+                                System.out.println("Calling MainActor");
                                 mainActor.tell(message, ActorRef.noSender());
                                 return complete("Start test");
                             })));
