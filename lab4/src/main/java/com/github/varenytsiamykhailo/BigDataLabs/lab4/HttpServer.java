@@ -70,18 +70,18 @@ public class HttpServer {
         }
 
         private void setActors() {
-            mainActor = actorSystem.actorOf(Props.create(MainActor.class), "MainActor");
-            storeActor = actorSystem.actorOf(Props.create(StoreActor.class), "StoreActor");
-            testExecutionActor = actorSystem.actorOf(Props.create(TestExecutionActor.class), "TestExecutionActor");
+            mainActor = actorSystem.actorOf(Props.create(MainActor.class));
+            storeActor = actorSystem.actorOf(Props.create(StoreActor.class));
+            testExecutionActor = actorSystem.actorOf(Props.create(TestExecutionActor.class));
         }
 
         private Route createRoute() {
-            return get(() -> parameter("packageId", key -> { // Если запрос с методом GET - выдаем результат, хранящийся в toreActor
+            return get(() -> parameter("packageId", key -> { // Если запрос с методом GET - выдаем результат, хранящийся в StoreActor
                         System.out.println("Calling StoreActor");
                         CompletionStage<Object> result = PatternsCS.ask(storeActor, Integer.parseInt(key), 5000);
                         return completeOKWithFuture(result, Jackson.marshaller());
                     }))
-                    .orElse(post(() ->
+                    .orElse(post(() -> // Если запрос с методом POST - выдаем результат, хранящийся в StoreActor
                             entity(Jackson.unmarshaller(Package.class), message -> {
                                 System.out.println("Calling MainActor");
                                 mainActor.tell(message, ActorRef.noSender());
