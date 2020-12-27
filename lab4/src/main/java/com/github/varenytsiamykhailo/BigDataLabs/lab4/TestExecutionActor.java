@@ -26,7 +26,11 @@ public class TestExecutionActor extends AbstractActor {
                                        ArrayList<Integer> testParams,
                                        String functionName,
                                        String expectedResult) {
-        
+        ScriptEngine engine = new
+                ScriptEngineManager().getEngineByName("nashorn");
+        engine.eval(jscript);
+        Invocable invocable = (Invocable) engine;
+        return invocable.invokeFunction(functionName, params).toString();
 
     }
 
