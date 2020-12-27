@@ -35,4 +35,19 @@ public class PackageIdTests {
         this.tests = tests;
     }
 
+    public Integer getPackageId() {
+        return packageId;
+    }
+
+    public String getJsScript() {
+        return jsScript;
+    }
+
+    public String getFunctionName() {
+        return functionName;
+    }
+
+    public ArrayList<TestResult> getTests() {
+        return tests;
+    }
 }
