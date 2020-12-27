@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class TestResult {
 
+    private final String PACKAGE_ID = "packageId";
     private final String TEST_NAME = "testName";
     private final String EXPECTED_RESULT = "expectedResult";
     private final String TEST_PARAMS = "params";

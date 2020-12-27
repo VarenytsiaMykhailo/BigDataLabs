@@ -11,7 +11,7 @@ public class StoreActor extends AbstractActor {
         return ReceiveBuilder.create()
                 .match(TestResult.class, message -> {
                     System.out.println("Store Actor. Received TestResult with the test name: " + message.getTestName());
-
+                    addTesToStoreCollection();
                 }).build();
     }
 }
