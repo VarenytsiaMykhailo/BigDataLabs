@@ -32,7 +32,7 @@ public class PackageIdTests {
         this.packageId = packageId;
         this.jsScript = jsScript;
         this.functionName = functionName;
-        this.testResult = testResult;
+        this.tests = tests;
     }
 
 }
