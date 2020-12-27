@@ -20,8 +20,7 @@ public class PackageIdTests {
     private String functionName;
 
     @JsonProperty(TESTS)
-    private TestResult testResult;
-
+    private ArrayList<TestResult> tests;
     @JsonCreator
     public Test(@JsonProperty(PACKAGE_ID) Integer packageId,
                 @JsonProperty(JS_SCRIPT) String jsScript,
