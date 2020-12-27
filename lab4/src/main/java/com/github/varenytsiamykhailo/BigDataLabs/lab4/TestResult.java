@@ -51,6 +51,10 @@ public class TestResult {
         this.testParams = testParams;
     }
 
+    public Integer getPackageId() {
+        return packageId;
+    }
+
     public String getTestName() {
         return testName;
     }
