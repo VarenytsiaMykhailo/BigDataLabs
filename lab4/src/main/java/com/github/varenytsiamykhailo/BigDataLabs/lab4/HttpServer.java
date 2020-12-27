@@ -76,7 +76,7 @@ public class HttpServer {
         }
 
         private Route createRoute() {
-            return get( // Если запрос с методом GET - выдаем результат, хранящийся в StoreActor
+            return get( // Если запрос с методом GET - выдаем результат, хранящийся в storeActor
                     () -> parameter("packageId", key -> {
                         System.out.println("Calling StoreActor");
                         CompletionStage<Object> result = PatternsCS.ask(storeActor, Integer.parseInt(key), 5000);
