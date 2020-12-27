@@ -74,19 +74,18 @@ public class HttpServer {
         }
 
         private Route createRoute() {
-            return get( // Если запрос с методом GET - выдаем результат, хранящийся в storeActor
+            return post( // Если запрос с методом POST - посылаем данные на обработку в mainActor
+                    () -> entity(Jackson.unmarshaller(PackageIdTests.class), message -> {
+                        System.out.println("Calling MainActor");
+                        mainActor.tell(message, ActorRef.noSender());
+                        return complete("Start test");
+                    })
+            ).orElse(get( // Если запрос с методом GET - выдаем результат, хранящийся в storeActor
                     () -> parameter("packageId", key -> {
                         System.out.println("Calling StoreActor");
                         CompletionStage<Object> result = PatternsCS.ask(storeActor, Integer.parseInt(key), 5000);
                         return completeOKWithFuture(result, Jackson.marshaller());
-                    }))
-                    .orElse(post( // Если запрос с методом POST - посылаем данные на обработку в mainActor
-                            () ->
-                            entity(Jackson.unmarshaller(PackageIdTests.class), message -> {
-                                System.out.println("Calling MainActor");
-                                mainActor.tell(message, ActorRef.noSender());
-                                return complete("Start test");
-                            })));
+                    })));
         }
 
     }
