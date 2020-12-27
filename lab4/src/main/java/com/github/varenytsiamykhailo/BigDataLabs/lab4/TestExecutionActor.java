@@ -4,6 +4,7 @@ package com.github.varenytsiamykhailo.BigDataLabs.lab4;
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.japi.pf.ReceiveBuilder;
+import scala.Int;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
@@ -21,6 +22,7 @@ public class TestExecutionActor extends AbstractActor {
                 .match(TestForTestExecutionActor.class, message -> {
                     TestResult testResult = message.getTestResult();
                     TestResult executedTestResult = executeTestByJSEngine(
+                            message.getPackageId(),
                             message.getJsScript(),
                             testResult.getTestName(),
                             testResult.getTestParams(),
@@ -31,7 +33,8 @@ public class TestExecutionActor extends AbstractActor {
                 }).build();
     }
 
-    private TestResult executeTestByJSEngine(String codeForTest,
+    private TestResult executeTestByJSEngine(Integer packageId,
+                                             String codeForTest,
                                              String testName,
                                              ArrayList<Integer> testParams,
                                              String functionName,
