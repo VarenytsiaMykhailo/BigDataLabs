@@ -8,7 +8,7 @@ public class PackageIdTests {
     private final String PACKAGE_ID = "packageId";
     private final String JS_SCRIPT = "jsScript";
     private final String FUNCTION_NAME = "functionName";
-    private final String TEST_RESULTS = "testResults";
+    private final String TESTS = "tests";
 
     @JsonProperty(PACKAGE_ID)
     private Integer packageId;
@@ -19,7 +19,7 @@ public class PackageIdTests {
     @JsonProperty(FUNCTION_NAME)
     private String functionName;
 
-    @JsonProperty(TEST_RESULT)
+    @JsonProperty(TESTS)
     private TestResult testResult;
 
     @JsonCreator
