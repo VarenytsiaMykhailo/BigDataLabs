@@ -22,7 +22,6 @@ public class TestExecutionActor extends AbstractActor {
                 .match(TestForTestExecutionActor.class, message -> {
                     System.out.println("Im TestExecutionActor. Starting test");
                     TestResult testResult = message.getTestResult();
-                    testResult.set
                     TestResult executedTestResult = executeTestByJSEngine(
                             message.getPackageId(),
                             message.getJsScript(),

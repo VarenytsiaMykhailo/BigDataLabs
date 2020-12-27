@@ -70,7 +70,7 @@ public class TestResult {
     public String getTestResult() {
         return testResult;
     }
-    
+
     public void setPackageId(Integer packageId) {
         this.packageId = packageId;
     }

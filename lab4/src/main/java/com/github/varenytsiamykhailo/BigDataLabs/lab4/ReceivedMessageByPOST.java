@@ -25,7 +25,7 @@ public class ReceivedMessageByPOST {
     private ArrayList<TestResult> tests;
 
     @JsonCreator
-    public ReceivedMessageByPOST(@JsonProperty(PACKAGE_ID) Integer packageId,
+    public ReceivedMessageByPOST(@JsonProperty(PACKAGE_ID) int packageId,
                                  @JsonProperty(JS_SCRIPT) String jsScript,
                                  @JsonProperty(FUNCTION_NAME) String functionName,
                                  @JsonProperty(TESTS) ArrayList<TestResult> tests) {
