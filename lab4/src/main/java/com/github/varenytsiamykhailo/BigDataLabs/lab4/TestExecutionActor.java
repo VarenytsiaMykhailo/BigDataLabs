@@ -5,6 +5,8 @@ import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.japi.pf.ReceiveBuilder;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
 import java.util.ArrayList;
 
 public class TestExecutionActor extends AbstractActor {
@@ -26,9 +28,8 @@ public class TestExecutionActor extends AbstractActor {
                                        ArrayList<Integer> testParams,
                                        String functionName,
                                        String expectedResult) {
-        ScriptEngine engine = new
-                ScriptEngineManager().getEngineByName("nashorn");
-        engine.eval(jscript);
+        ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
+        engine.eval(jscrsipt);
         Invocable invocable = (Invocable) engine;
         return invocable.invokeFunction(functionName, params).toString();
 
