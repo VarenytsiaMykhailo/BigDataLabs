@@ -6,7 +6,7 @@ import akka.japi.pf.ReceiveBuilder;
 
 public class MainActor extends AbstractActor {
 
-    private String TEST_EXECUTION_ACTOR_NAME = "TestExecutionActor";
+    private static String TEST_EXECUTION_ACTOR_NAME = "TestExecutionActor";
 
     @Override
     public Receive createReceive() {
