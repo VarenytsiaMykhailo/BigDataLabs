@@ -11,7 +11,7 @@ public class TestResult {
     private final String EXPECTED_RESULT = "expectedResult";
     private final String TEST_PARAMS = "params";
     private final String TEST_RESULT = "testResult";
-
+    
     @JsonProperty(TEST_NAME)
     private String testName;
 
@@ -24,6 +24,8 @@ public class TestResult {
     @JsonProperty(TEST_RESULT)
     private String testResult; // если тест не был выполнен движком JS и в результате получены Exceptions, то они помещаются в эту строку
 
+
+    // Конструктор для создания результата после тестирования движком JS
     public TestResult(String testName,
                       String expectedResult,
                       ArrayList<Integer> testParams,
