@@ -51,7 +51,7 @@ public class TestExecutionActor extends AbstractActor {
         } catch (ScriptException | NoSuchMethodException e) {
             result = e.getMessage();
         }
-        return new TestResult(testName, expectedResult, testParams, result);
+        return new TestResult(packageId, testName, expectedResult, testParams, result);
     }
 
 }
