@@ -5,8 +5,10 @@ import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.japi.pf.ReceiveBuilder;
 
+import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import java.util.ArrayList;
 
 public class TestExecutionActor extends AbstractActor {
@@ -29,10 +31,16 @@ public class TestExecutionActor extends AbstractActor {
                                        String functionName,
                                        String expectedResult) {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
-        engine.eval(jscrsipt);
-        Invocable invocable = (Invocable) engine;
-        return invocable.invokeFunction(functionName, params).toString();
+        try {
+            engine.eval(codeForTest);
 
+        Invocable invocable = (Invocable) engine;
+        String result = invocable.invokeFunction(functionName, testParams.toArray()).toString();
+
+        System.out.println("Test finished. Expected result: " + expectedResult + " received test result: " + result);
+        } catch (ScriptException | NoSuchMethodException e) {
+            e.printStackTrace();
+        }
     }
 
 }

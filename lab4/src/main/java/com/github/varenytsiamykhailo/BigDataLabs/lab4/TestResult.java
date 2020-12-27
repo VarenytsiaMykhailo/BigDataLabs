@@ -18,7 +18,7 @@ public class TestResult {
 
     private ArrayList<Integer> testParams;
 
-    private boolean isSuccessfulTest;
+    private boolean isSuccessfulTest; // false - если тест не был выполнен движком JS и в результате получены Exceptions
 
     public TestResult(String testName,
                       String expectedResult,
