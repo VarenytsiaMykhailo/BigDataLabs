@@ -3,6 +3,8 @@ package com.github.varenytsiamykhailo.BigDataLabs.lab4;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.ArrayList;
+
 public class PackageIdTests {
 
     private final String PACKAGE_ID = "packageId";
@@ -21,6 +23,7 @@ public class PackageIdTests {
 
     @JsonProperty(TESTS)
     private ArrayList<TestResult> tests;
+
     @JsonCreator
     public Test(@JsonProperty(PACKAGE_ID) Integer packageId,
                 @JsonProperty(JS_SCRIPT) String jsScript,
