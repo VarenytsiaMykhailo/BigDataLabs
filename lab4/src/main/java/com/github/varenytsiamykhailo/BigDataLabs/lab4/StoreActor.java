@@ -23,7 +23,7 @@ public class StoreActor extends AbstractActor {
                     addTestToStoreCollection(message);
                 }).match(Integer.class, message -> {
                     System.out.println("Im Store Actor. Sending the test results for package id: " + message;
-                    sender().tell(resultsStore.get(message), ActorRef.noSender());
+                    sender().tell(new ResultsForGET(message, getResultsFromStoreCollection(message)), ActorRef.noSender());
                 }).build();
     }
 
@@ -43,7 +43,7 @@ public class StoreActor extends AbstractActor {
         }
     }
 
-    private List<TestResult> getTestFromStoreCollection(int packageId) {
+    private List<TestResult> getResultsFromStoreCollection(int packageId) {
         ConcurrentLinkedDeque<TestResult> resultsForPackageId = resultsStore.get(packageId);
         if (resultsForPackageId == null) { // Если в хранилище нет результатов для данного packageId
             return new ArrayList<>(); // Вернем пустой список
