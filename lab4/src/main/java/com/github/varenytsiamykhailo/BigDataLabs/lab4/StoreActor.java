@@ -21,7 +21,7 @@ public class StoreActor extends AbstractActor {
     }
 
     void addTesToStoreCollection(TestResult testResult) {
-        
+
         Integer packageId = testResult.getPackageId();
         ConcurrentLinkedDeque<TestResult> resultsForPackageId = resultsStore.get(packageId);
 
