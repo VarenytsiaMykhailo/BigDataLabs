@@ -49,9 +49,7 @@ public class HttpServer {
 
         System.out.println("Server online at port " + port + "\nPress RETURN to stop...");
 
-        binding
-                .thenCompose(ServerBinding::unbind)
-                .thenAccept(unbound -> actorSystem.terminate());
+        binding.thenCompose(ServerBinding::unbind).thenAccept(unbound -> actorSystem.terminate());
     }
 
     private class MainHttp {
