@@ -35,6 +35,7 @@ public class TestResult {
                       String expectedResult,
                       ArrayList<Integer> testParams,
                       String testResult) {
+        this.packageId = packageId;
         this.testName = testName;
         this.expectedResult = expectedResult;
         this.testParams = testParams;
