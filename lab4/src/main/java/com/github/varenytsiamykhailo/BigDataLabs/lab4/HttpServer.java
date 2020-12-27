@@ -92,6 +92,7 @@ public class HttpServer {
                     })
             ).orElse(get( // Если запрос с методом GET - выдаем результат, хранящийся в storeActor
                     () -> parameter("packageId", key -> {
+                        System.out.println("Received message by GET request:");
                         System.out.println("Calling StoreActor");
                         CompletionStage<Object> result = PatternsCS.ask(storeActor, Integer.parseInt(key), 5000);
                         return completeOKWithFuture(result, Jackson.marshaller());
