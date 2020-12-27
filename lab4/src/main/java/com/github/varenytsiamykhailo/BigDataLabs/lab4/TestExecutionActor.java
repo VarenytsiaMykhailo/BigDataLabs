@@ -36,11 +36,11 @@ public class TestExecutionActor extends AbstractActor {
             engine.eval(codeForTest);
 
             Invocable invocable = (Invocable) engine;
-            invocable.invokeFunction(functionName, testParams.toArray()).toString();
+            result = invocable.invokeFunction(functionName, testParams.toArray()).toString();
 
             System.out.println("Test finished. Expected result: " + expectedResult + " received test result: " + result);
         } catch (ScriptException | NoSuchMethodException e) {
-            e.getMessage();
+            result = e.getMessage();
         }
     }
 
