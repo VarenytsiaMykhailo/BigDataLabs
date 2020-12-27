@@ -82,7 +82,7 @@ public class HttpServer {
                     }))
                     .orElse(post( // Если запрос с методом POST - посылаем данные на обработку в mainActor
                             () ->
-                            entity(Jackson.unmarshaller(Package.class), message -> {
+                            entity(Jackson.unmarshaller(PackageIdTests.class), message -> {
                                 System.out.println("Calling MainActor");
                                 mainActor.tell(message, ActorRef.noSender());
                                 return complete("Start test");
