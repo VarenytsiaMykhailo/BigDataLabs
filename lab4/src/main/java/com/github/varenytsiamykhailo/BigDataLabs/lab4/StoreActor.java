@@ -22,7 +22,7 @@ public class StoreActor extends AbstractActor {
                     System.out.println("Im Store Actor. Received TestResult with the test name: " + message.getTestName() + " and the package id: " +  message.getPackageId());
                     addTestToStoreCollection(message);
                 }).match(Integer.class, message -> {
-                    System.out.println("Im Store Actor. Sending the test results for package id: " + message;
+                    System.out.println("Im Store Actor. Sending the test results for package id: " + message);
                     sender().tell(new ResultsForGET(message, getResultsFromStoreCollection(message)), ActorRef.noSender());
                 }).build();
     }
