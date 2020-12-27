@@ -21,7 +21,7 @@ public class StoreActor extends AbstractActor {
     }
 
     void addTestToStoreCollection(TestResult testResult) {
-        System.out.println("Im Store Actor. Adding test to the store: " + testResult.getTestName() + " of package id: " + testResult.getPackageId());
+        System.out.println("Adding test to the store: " + testResult.getTestName() + " of package id: " + testResult.getPackageId());
         Integer packageId = testResult.getPackageId();
         ConcurrentLinkedDeque<TestResult> resultsForPackageId = resultsStore.get(packageId);
 
