@@ -15,6 +15,7 @@ import akka.pattern.PatternsCS;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 
+import java.io.IOException;
 import java.util.concurrent.CompletionStage;
 
 import static akka.http.javadsl.server.Directives.*;
@@ -30,7 +31,7 @@ public class HttpServer {
         this.port = port;
     }
 
-    public void run() {
+    public void run() throws IOException {
 
         // Инициализация http сервера
         ActorSystem actorSystem = ActorSystem.create("actorSystem");
@@ -49,6 +50,7 @@ public class HttpServer {
 
         System.out.println("Server online at port " + port + "\nPress RETURN to stop...");
 
+        System.in.read();
         binding.thenCompose(ServerBinding::unbind).thenAccept(unbound -> actorSystem.terminate());
     }
 
