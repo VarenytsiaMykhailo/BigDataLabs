@@ -9,8 +9,8 @@ public class MainActor extends AbstractActor {
 
     @Override
     public Receive createReceive() {
-        return ReceiveBuilder.create().match(PackageIdTests.class, message -> {
-            for (int i = 0; i < ; i++) {
+        return ReceiveBuilder.create().match(ReceivedMessageByPOST.class, message -> {
+            for (TestResult testResult : message.getTests()) {
                 
             }
 

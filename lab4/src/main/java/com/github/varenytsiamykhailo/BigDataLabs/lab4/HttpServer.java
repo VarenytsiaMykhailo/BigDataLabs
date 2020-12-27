@@ -79,7 +79,7 @@ public class HttpServer {
 
         private Route createRoute() {
             return post( // Если запрос с методом POST - посылаем данные на обработку в mainActor
-                    () -> entity(Jackson.unmarshaller(PackageIdTests.class), message -> {
+                    () -> entity(Jackson.unmarshaller(ReceivedMessageByPOST.class), message -> {
                         System.out.println("Calling MainActor");
                         mainActor.tell(message, ActorRef.noSender());
                         return complete("Start test");
