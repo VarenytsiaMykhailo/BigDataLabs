@@ -13,6 +13,9 @@ public class TestResult {
     private final String TEST_PARAMS = "params";
     private final String TEST_RESULT = "testResult";
 
+    @JsonProperty(PACKAGE_ID)
+    private Integer packageId;
+
     @JsonProperty(TEST_NAME)
     private String testName;
 
