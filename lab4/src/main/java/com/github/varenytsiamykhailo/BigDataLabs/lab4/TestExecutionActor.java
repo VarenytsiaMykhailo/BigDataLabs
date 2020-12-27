@@ -25,21 +25,22 @@ public class TestExecutionActor extends AbstractActor {
         }).build();
     }
 
-    private void executeTestByJSEngine(String codeForTest,
+    private TestResult executeTestByJSEngine(String codeForTest,
                                        String testName,
                                        ArrayList<Integer> testParams,
                                        String functionName,
                                        String expectedResult) {
-        ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
+
         try {
+            ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
             engine.eval(codeForTest);
 
-        Invocable invocable = (Invocable) engine;
-        String result = invocable.invokeFunction(functionName, testParams.toArray()).toString();
+            Invocable invocable = (Invocable) engine;
+            String result = invocable.invokeFunction(functionName, testParams.toArray()).toString();
 
-        System.out.println("Test finished. Expected result: " + expectedResult + " received test result: " + result);
+            System.out.println("Test finished. Expected result: " + expectedResult + " received test result: " + result);
         } catch (ScriptException | NoSuchMethodException e) {
-            e.printStackTrace();
+            e.getMessage();
         }
     }
 
