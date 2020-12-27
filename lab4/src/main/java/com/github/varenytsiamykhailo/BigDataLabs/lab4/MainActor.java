@@ -13,7 +13,7 @@ public class MainActor extends AbstractActor {
         return ReceiveBuilder.create().match(ReceivedMessageByPOST.class, message -> {
             for (TestResult testResult : message.getTests()) {
                 getContext().actorSelection("/user/" + TEST_EXECUTION_ACTOR_NAME).tell( // Отправляем тест на тестирование в TestExecutionActor
-                        //new Test(message.getPackageId(), message.getJsScript(), message.getFunctionName(), testResult),
+                        new TestForTestExecutionActor(message.getPackageId(), message.getJsScript(), message.getFunctionName(), testResult),
                         ActorRef.noSender()
                 );
             }
