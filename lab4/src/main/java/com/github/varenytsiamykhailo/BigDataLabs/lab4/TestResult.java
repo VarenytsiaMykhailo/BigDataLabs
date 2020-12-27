@@ -30,6 +30,7 @@ public class TestResult {
         this.isSuccessfulTest = isSuccessfulTest;
     }
 
+    // Конструктор для парсинга Jackson'ом прилетевшего массива test из ReceivedMessageByPOST
     @JsonCreator
     public TestResult(@JsonProperty(TEST_NAME) String testName,
                       @JsonProperty(EXPECTED_RESULT) String expectedResult,
