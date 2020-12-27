@@ -5,6 +5,8 @@ import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.japi.pf.ReceiveBuilder;
 
+import java.util.ArrayList;
+
 public class TestExecutionActor extends AbstractActor {
 
     private static String STORE_ACTOR_NAME = "StoreActor";
@@ -12,14 +14,20 @@ public class TestExecutionActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create().match(TestForTestExecutionActor.class, message -> {
-            for (TestResult testResult : message.getTests()) {
-                getContext().actorSelection("/user/" + TEST_EXECUTION_ACTOR_NAME).tell( // Отправляем тест на тестирование в TestExecutionActor
-                        new TestForTestExecutionActor(message.getPackageId(), message.getJsScript(), message.getFunctionName(), testResult),
-                        ActorRef.noSender()
-                );
-            }
+
+            TestResult testResult = message.getTestResult();
+
 
         }).build();
+    }
+
+    private void executeTestByJSEngine(String codeForTest,
+                                       String testName,
+                                       ArrayList<Integer> testParams,
+                                       String functionName,
+                                       String expectedResult) {
+        
+
     }
 
 }
