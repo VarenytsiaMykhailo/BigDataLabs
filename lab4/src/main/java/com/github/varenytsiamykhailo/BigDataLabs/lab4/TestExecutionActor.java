@@ -22,6 +22,7 @@ public class TestExecutionActor extends AbstractActor {
                 .match(TestForTestExecutionActor.class, message -> {
                     System.out.println("Im TestExecutionActor. Starting test");
                     TestResult testResult = message.getTestResult();
+                    testResult.set
                     TestResult executedTestResult = executeTestByJSEngine(
                             message.getPackageId(),
                             message.getJsScript(),
@@ -30,6 +31,7 @@ public class TestExecutionActor extends AbstractActor {
                             message.getFunctionName(),
                             testResult.getExpectedResult()
                     );
+                    System.out.println("Sending test result for the test name: " + testResult.getTestName() + " package id: " + testResult.getPackageId() +"to StoreActor");
                     getContext().actorSelection("/user/" + STORE_ACTOR_NAME).tell(executedTestResult, ActorRef.noSender());
                 }).build();
     }
