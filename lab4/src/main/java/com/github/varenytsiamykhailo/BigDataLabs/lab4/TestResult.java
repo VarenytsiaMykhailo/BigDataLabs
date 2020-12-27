@@ -10,7 +10,7 @@ public class TestResult {
     private final String TEST_NAME = "testName";
     private final String EXPECTED_RESULT = "expectedResult";
     private final String TEST_PARAMS = "params";
-    private final String IS_SUCCESSFUL_TEST = "isSuccessfulTest";
+    private final String TEST_RESULT = "testResult";
 
     private String testName;
 
@@ -18,16 +18,16 @@ public class TestResult {
 
     private ArrayList<Integer> testParams;
 
-    private String testResult; //  если тест не был выполнен движком JS и в результате получены Exceptions, то они помещаются в эту строку
+    private String testResult; // если тест не был выполнен движком JS и в результате получены Exceptions, то они помещаются в эту строку
 
     public TestResult(String testName,
                       String expectedResult,
                       ArrayList<Integer> testParams,
-                      boolean isSuccessfulTest) {
+                      String testResult) {
         this.testName = testName;
         this.expectedResult = expectedResult;
         this.testParams = testParams;
-        this.isSuccessfulTest = isSuccessfulTest;
+        this.testResult = testResult;
     }
 
     // Конструктор для парсинга Jackson'ом прилетевшего массива test из ReceivedMessageByPOST
@@ -52,7 +52,7 @@ public class TestResult {
         return testParams;
     }
 
-    public boolean isSuccessfulTest() {
-        return isSuccessfulTest;
+    public String getTestResult() {
+        return testResult;
     }
 }
