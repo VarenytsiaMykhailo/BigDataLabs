@@ -48,7 +48,9 @@ public class StoreActor extends AbstractActor {
         if (resultsForPackageId == null) { // Если в хранилище нет результатов для данного packageId
             return new ArrayList<>(); // Вернем пустой список
         } else {
-            return Arrays.asList(new TestResult[resultsForPackageId.size()]);
+            List<TestResult> resultsList = Arrays.asList(new TestResult[resultsForPackageId.size()]);
+            System.out.println("Sending resultsList: " + resultsList.size());
+            return resultsList;
         }
     }
 }
