@@ -50,7 +50,7 @@ public class HttpServer {
 
         System.out.println("Server online at port " + port + "\nPress RETURN to stop...");
 
-        System.in.read(); // Считываем приходящие Exceptions
+        System.in.read(); // Считываем приходящие Exceptions и с помощью throws отправляем их вызывающей программе
         binding.thenCompose(ServerBinding::unbind).thenAccept(unbound -> actorSystem.terminate());
     }
 
