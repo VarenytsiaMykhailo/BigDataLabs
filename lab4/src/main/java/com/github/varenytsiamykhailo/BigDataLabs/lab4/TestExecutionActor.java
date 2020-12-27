@@ -30,7 +30,7 @@ public class TestExecutionActor extends AbstractActor {
                             message.getFunctionName(),
                             testResult.getExpectedResult()
                     );
-                    System.out.println("Sending test result for the test name: " + testResult.getTestName() + " package id: " + testResult.getPackageId() +"to StoreActor");
+                    System.out.println("Sending test result for the test name: " + executedTestResult.getTestName() + " package id: " + executedTestResult.getPackageId() +"to StoreActor");
                     getContext().actorSelection("/user/" + STORE_ACTOR_NAME).tell(executedTestResult, ActorRef.noSender());
                 }).build();
     }
