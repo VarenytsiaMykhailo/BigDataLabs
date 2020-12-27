@@ -21,12 +21,16 @@ public class StoreActor extends AbstractActor {
     }
 
     void addTesToStoreCollection(TestResult testResult) {
-        ConcurrentLinkedDeque<TestResult> resultsForPackageId = resultsStore.get(testResult.getPackageId());
+        
+        Integer packageId = testResult.getPackageId();
+        ConcurrentLinkedDeque<TestResult> resultsForPackageId = resultsStore.get(packageId);
 
         if (resultsForPackageId == null) { // Если в хранилище еще нет тестов для нужного packageId, то добавим их
             resultsForPackageId = new ConcurrentLinkedDeque<>();
             resultsForPackageId.add(testResult);
-            
+            resultsStore.put(packageId, resultsForPackageId);
+        } else {
+            resultsForPackageId.add(testResult);
         }
     }
 }
