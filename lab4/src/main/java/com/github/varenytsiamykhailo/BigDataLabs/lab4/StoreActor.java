@@ -1,8 +1,12 @@
 package com.github.varenytsiamykhailo.BigDataLabs.lab4;
 
 import akka.actor.AbstractActor;
+import akka.actor.ActorRef;
 import akka.japi.pf.ReceiveBuilder;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedDeque;
@@ -19,7 +23,7 @@ public class StoreActor extends AbstractActor {
                     addTestToStoreCollection(message);
                 }).match(Integer.class, message -> {
                     System.out.println("Im Store Actor. Sending the test results for package id: " + message;
-                    addTestToStoreCollection(message);
+                    sender().tell(resultsStore.get(message), ActorRef.noSender());
                 }).build();
     }
 
@@ -36,6 +40,15 @@ public class StoreActor extends AbstractActor {
         } else {
             System.out.println("There was previous results for this package id. Adding results");
             resultsForPackageId.add(testResult);
+        }
+    }
+
+    private List<TestResult> getTestFromStoreCollection(int packageId) {
+        ConcurrentLinkedDeque<TestResult> resultsForPackageId = resultsStore.get(packageId);
+        if (resultsForPackageId == null) { // Если в хранилище нет результатов для данного packageId
+            return new ArrayList<>(); // Вернем пустой список
+        } else {
+            return Arrays.asList(new TestResult[resultsForPackageId.size()]);
         }
     }
 }
