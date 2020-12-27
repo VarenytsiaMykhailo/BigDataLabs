@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class StoreActor extends AbstractActor {
-    private Map<Integer, ConcurrentLinkedDeque<TestResult>> resultsStore = new ConcurrentHashMap<>();
+    private Map<Integer, ConcurrentLinkedDeque<TestResult>> resultsStore = new ConcurrentHashMap<>(); // id пакета и список тестов, соответствующий этому пакету
 
 
     @Override
