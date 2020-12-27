@@ -21,6 +21,7 @@ public class TestResult {
     @JsonProperty(TEST_PARAMS)
     private ArrayList<Integer> testParams;
 
+    @JsonProperty(TEST_RESULT)
     private String testResult; // если тест не был выполнен движком JS и в результате получены Exceptions, то они помещаются в эту строку
 
     public TestResult(String testName,
