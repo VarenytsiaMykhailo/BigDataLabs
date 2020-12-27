@@ -67,6 +67,7 @@ public class HttpServer {
         private ActorRef testExecutionActor;
 
         public MainHttp(ActorSystem actorSystem) {
+            System.out.println("Initialize MainHttp server. Setting Actors.");
             this.actorSystem = actorSystem;
             setActors();
         }
@@ -78,6 +79,7 @@ public class HttpServer {
         }
 
         private Route createRoute() {
+            System.out.println("Creating Route.");
             return post( // Если запрос с методом POST - посылаем данные на обработку в mainActor
                     () -> entity(Jackson.unmarshaller(ReceivedMessageByPOST.class), message -> {
                         System.out.println("Calling MainActor");
