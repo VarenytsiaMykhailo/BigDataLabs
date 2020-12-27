@@ -84,6 +84,8 @@ public class HttpServer {
             System.out.println("Creating Route");
             return post( // Если запрос с методом POST - посылаем данные на обработку в mainActor
                     () -> entity(Jackson.unmarshaller(ReceivedMessageByPOST.class), message -> {
+                        System.out.println("Received message by POST request:");
+                        System.out.println("Function Name: " + message.getFunctionName() + "Package id: " + message.getPackageId());
                         System.out.println("Calling MainActor");
                         mainActor.tell(message, ActorRef.noSender());
                         return complete("Start test");
