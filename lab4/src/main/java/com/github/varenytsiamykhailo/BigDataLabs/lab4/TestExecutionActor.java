@@ -20,16 +20,17 @@ public class TestExecutionActor extends AbstractActor {
         return ReceiveBuilder.create().match(TestForTestExecutionActor.class, message -> {
 
             TestResult testResult = message.getTestResult();
+            TestResult executedTestResult = executeTestByJSEngine(message.getJsScript(), testResult.getTestName(), testResult.getTestParams(), message.getFunctionName(), testResult.getExpectedResult());
 
 
         }).build();
     }
 
     private TestResult executeTestByJSEngine(String codeForTest,
-                                       String testName,
-                                       ArrayList<Integer> testParams,
-                                       String functionName,
-                                       String expectedResult) {
+                                             String testName,
+                                             ArrayList<Integer> testParams,
+                                             String functionName,
+                                             String expectedResult) {
         String result;
         try {
             ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
