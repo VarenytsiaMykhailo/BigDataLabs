@@ -18,7 +18,6 @@ public class TestExecutionActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create().match(TestForTestExecutionActor.class, message -> {
-
             TestResult testResult = message.getTestResult();
             TestResult executedTestResult = executeTestByJSEngine(
                     message.getJsScript(),
