@@ -18,12 +18,4 @@ public class ResultsForGET {
         this.packageId = packageId;
         this.testResults = testResults;
     }
-
-    public Integer getPackageId() {
-        return packageId;
-    }
-
-    public List<TestResult> getTests() {
-        return tests;
-    }
 }
