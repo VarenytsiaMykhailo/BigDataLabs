@@ -17,17 +17,18 @@ public class TestExecutionActor extends AbstractActor {
 
     @Override
     public Receive createReceive() {
-        return ReceiveBuilder.create().match(TestForTestExecutionActor.class, message -> {
-            TestResult testResult = message.getTestResult();
-            TestResult executedTestResult = executeTestByJSEngine(
-                    message.getJsScript(),
-                    testResult.getTestName(),
-                    testResult.getTestParams(),
-                    message.getFunctionName(),
-                    testResult.getExpectedResult()
-            );
-            getContext().actorSelection("/user/" + STORE_ACTOR_NAME).tell(executedTestResult, ActorRef.noSender());
-        }).build();
+        return ReceiveBuilder.create()
+                .match(TestForTestExecutionActor.class, message -> {
+                    TestResult testResult = message.getTestResult();
+                    TestResult executedTestResult = executeTestByJSEngine(
+                            message.getJsScript(),
+                            testResult.getTestName(),
+                            testResult.getTestParams(),
+                            message.getFunctionName(),
+                            testResult.getExpectedResult()
+                    );
+                    getContext().actorSelection("/user/" + STORE_ACTOR_NAME).tell(executedTestResult, ActorRef.noSender());
+                }).build();
     }
 
     private TestResult executeTestByJSEngine(String codeForTest,
