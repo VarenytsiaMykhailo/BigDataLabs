@@ -1,10 +1,15 @@
 package com.github.varenytsiamykhailo.BigDataLabs.lab4;
 
 import akka.actor.AbstractActor;
-import akka.actor.ActorRef;
 import akka.japi.pf.ReceiveBuilder;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedDeque;
+
 public class StoreActor extends AbstractActor {
+    private Map<Integer, ConcurrentLinkedDeque<TestResult>> store = new ConcurrentHashMap<>();
+
 
     @Override
     public Receive createReceive() {
