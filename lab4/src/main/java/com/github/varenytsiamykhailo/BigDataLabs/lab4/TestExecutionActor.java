@@ -28,8 +28,6 @@ public class TestExecutionActor extends AbstractActor {
                     testResult.getExpectedResult()
             );
             getContext().actorSelection("/user/" + STORE_ACTOR_NAME).tell(executedTestResult, ActorRef.noSender());
-
-
         }).build();
     }
 
