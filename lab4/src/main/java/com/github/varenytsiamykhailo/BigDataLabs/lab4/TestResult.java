@@ -15,6 +15,7 @@ public class TestResult {
     @JsonProperty(TEST_NAME)
     private String testName;
 
+    @JsonProperty(EXPECTED_RESULT)
     private String expectedResult;
 
     private ArrayList<Integer> testParams;
