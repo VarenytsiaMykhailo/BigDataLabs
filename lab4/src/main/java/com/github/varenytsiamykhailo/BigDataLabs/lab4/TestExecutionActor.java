@@ -20,6 +20,7 @@ public class TestExecutionActor extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create()
                 .match(TestForTestExecutionActor.class, message -> {
+                    System.out.println("Im TestExecutionActor. Starting test");
                     TestResult testResult = message.getTestResult();
                     TestResult executedTestResult = executeTestByJSEngine(
                             message.getPackageId(),
