@@ -1,6 +1,7 @@
 package com.github.varenytsiamykhailo.BigDataLabs.lab4;
 
 import akka.actor.AbstractActor;
+import akka.japi.pf.ReceiveBuilder;
 
 public class MainActor extends AbstractActor {
 
@@ -8,6 +9,11 @@ public class MainActor extends AbstractActor {
 
     @Override
     public Receive createReceive() {
-        return null;
+        return ReceiveBuilder.create().match(PackageIdTests.class, message -> {
+            for (int i = 0; i < ; i++) {
+                
+            }
+
+        }).build();
     }
 }
