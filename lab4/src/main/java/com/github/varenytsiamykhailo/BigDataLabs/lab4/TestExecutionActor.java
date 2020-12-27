@@ -27,6 +27,7 @@ public class TestExecutionActor extends AbstractActor {
                     message.getFunctionName(),
                     testResult.getExpectedResult()
             );
+            getContext().actorSelection("/user/" + STORE_ACTOR_NAME).tell(new );
 
 
         }).build();
