@@ -30,7 +30,8 @@ public class TestResult {
 
 
     // Конструктор для создания результата после тестирования движком JS
-    public TestResult(String testName,
+    public TestResult(Integer packageId,
+                      String testName,
                       String expectedResult,
                       ArrayList<Integer> testParams,
                       String testResult) {
