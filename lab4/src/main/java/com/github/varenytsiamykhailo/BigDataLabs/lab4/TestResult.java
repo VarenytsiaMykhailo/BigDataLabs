@@ -12,6 +12,7 @@ public class TestResult {
     private final String TEST_PARAMS = "params";
     private final String TEST_RESULT = "testResult";
 
+    @JsonProperty(TEST_NAME)
     private String testName;
 
     private String expectedResult;
