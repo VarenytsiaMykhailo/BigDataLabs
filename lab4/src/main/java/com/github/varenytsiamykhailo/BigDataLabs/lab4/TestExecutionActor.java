@@ -1,5 +1,8 @@
 package com.github.varenytsiamykhailo.BigDataLabs.lab4;
 
-public class TestExecutionActor {
+
+import akka.actor.AbstractActor;
+
+public class TestExecutionActor extends AbstractActor {
 
 }
