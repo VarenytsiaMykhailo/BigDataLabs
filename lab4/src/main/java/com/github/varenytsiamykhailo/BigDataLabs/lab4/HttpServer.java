@@ -54,6 +54,10 @@ public class HttpServer {
 
     private class MainHttp {
 
+        private String MAIN_ACTOR_NAME = "MainActor";
+        private String STORE_ACTOR_NAME = "StoreActor";
+        private String TEST_EXECUTION_ACTOR_NAME = "TestExecutionActor";
+
         ActorSystem actorSystem;
 
         private ActorRef mainActor;
@@ -68,9 +72,9 @@ public class HttpServer {
         }
 
         private void setActors() {
-            mainActor = actorSystem.actorOf(Props.create(MainActor.class));
-            storeActor = actorSystem.actorOf(Props.create(StoreActor.class));
-            testExecutionActor = actorSystem.actorOf(Props.create(TestExecutionActor.class));
+            mainActor = actorSystem.actorOf(Props.create(MainActor.class), MAIN_ACTOR_NAME);
+            storeActor = actorSystem.actorOf(Props.create(StoreActor.class), STORE_ACTOR_NAME);
+            testExecutionActor = actorSystem.actorOf(Props.create(TestExecutionActor.class), TEST_EXECUTION_ACTOR_NAME);
         }
 
         private Route createRoute() {
