@@ -82,7 +82,7 @@ public class HttpServer {
                         CompletionStage<Object> result = PatternsCS.ask(storeActor, Integer.parseInt(key), 5000);
                         return completeOKWithFuture(result, Jackson.marshaller());
                     }))
-                    .orElse(post( // Если запрос с методом POST - выдаем результат, хранящийся в StoreActor
+                    .orElse(post( // Если запрос с методом POST - посылаем данные на обработку в mainActor
                             () ->
                             entity(Jackson.unmarshaller(Package.class), message -> {
                                 System.out.println("Calling MainActor");
